@@ -205,9 +205,9 @@ export function initTimeline() {
 
             return `
                 <div class="timeline-item" data-index="${originalIndex}">
+                    <div class="timeline-date">${dateDisplay}</div>
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
-                        <div class="timeline-date">${dateDisplay}</div>
                         <div class="timeline-event" onclick="window.showEventDetail(${originalIndex})">
                             ${event.title}
                         </div>

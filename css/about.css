@@ -29,15 +29,15 @@
 
 .timeline {
     position: relative;
-    max-width: 900px;
+    max-width: 1000px;
     margin: 0 auto;
-    padding-left: var(--spacing-xl);
+    padding-left: 150px;
 }
 
 .timeline::before {
     content: '';
     position: absolute;
-    left: 20px;
+    left: 170px;
     top: 0;
     bottom: 0;
     width: 3px;
@@ -49,12 +49,22 @@
     position: relative;
     margin-bottom: var(--spacing-xl);
     padding-left: var(--spacing-xl);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.timeline-date {
+    font-size: var(--font-size-small);
+    color: var(--color-text-muted);
+    font-weight: 500;
+    min-width: 120px;
+    text-align: right;
+    flex-shrink: 0;
 }
 
 .timeline-marker {
-    position: absolute;
-    left: -32px;
-    top: 5px;
+    position: relative;
     width: 20px;
     height: 20px;
     background-color: var(--color-primary);
@@ -63,6 +73,7 @@
     box-shadow: 0 0 0 3px var(--color-primary-light-bg);
     z-index: 2;
     transition: all var(--transition-normal);
+    flex-shrink: 0;
 }
 
 .timeline-item:hover .timeline-marker {
@@ -77,19 +88,13 @@
     border-radius: var(--radius-md);
     border-left: 4px solid var(--color-primary);
     transition: all var(--transition-normal);
+    flex: 1;
 }
 
 .timeline-item:hover .timeline-content {
     background-color: var(--color-primary-light-bg);
     transform: translateX(5px);
     box-shadow: var(--shadow-md);
-}
-
-.timeline-date {
-    font-size: var(--font-size-small);
-    color: var(--color-text-muted);
-    margin-bottom: var(--spacing-xs);
-    font-weight: 500;
 }
 
 .timeline-event {
@@ -326,14 +331,30 @@
         left: 15px;
     }
     
+    .timeline-item {
+        padding-left: var(--spacing-lg);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-sm);
+    }
+    
+    .timeline-date {
+        min-width: auto;
+        text-align: left;
+        font-size: var(--font-size-small);
+        margin-bottom: var(--spacing-xs);
+    }
+    
     .timeline-marker {
+        position: absolute;
         left: -27px;
+        top: 5px;
         width: 16px;
         height: 16px;
     }
     
-    .timeline-item {
-        padding-left: var(--spacing-lg);
+    .timeline-content {
+        width: 100%;
     }
     
     .development-plan,
