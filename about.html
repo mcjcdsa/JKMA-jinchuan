@@ -85,6 +85,14 @@
                     <!-- 内容待添加 -->
                 </div>
             </div>
+
+            <!-- 金川市集团划分 -->
+            <div class="about-section">
+                <h2 class="about-section-title">金川市集团划分</h2>
+                <div class="organizations-container" id="organizations-container">
+                    <!-- 集团划分内容将通过JavaScript动态加载 -->
+                </div>
+            </div>
         </div>
     </section>
 
@@ -101,11 +109,12 @@
     <script type="module">
         import { init } from './js/main.js';
         import { initTimeline } from './js/timeline.js';
+        import { initOrganizations } from './js/organizations.js';
         
         // 初始化通用功能
         init();
         
-        // 初始化时间轴
+        // 初始化时间轴和集团划分
         function initPage() {
             const timeline = document.getElementById('timeline');
             if (!timeline) {
@@ -128,6 +137,14 @@
                         </p>
                     </div>
                 `;
+            }
+            
+            // 初始化集团划分
+            try {
+                initOrganizations();
+                console.log('集团划分初始化成功');
+            } catch (error) {
+                console.error('集团划分初始化失败:', error);
             }
         }
         
