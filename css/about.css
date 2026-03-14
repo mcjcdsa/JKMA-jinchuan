@@ -120,6 +120,17 @@
     text-decoration: underline;
 }
 
+.timeline-period {
+    font-size: var(--font-size-small);
+    color: var(--color-primary);
+    font-weight: 600;
+    margin-left: var(--spacing-sm);
+    padding: 2px 6px;
+    background-color: var(--color-primary-light-bg);
+    border-radius: var(--radius-sm);
+    display: inline-block;
+}
+
 /* ========== 事件详情模态框 ========== */
 .event-modal {
     display: none;

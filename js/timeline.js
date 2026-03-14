@@ -174,6 +174,47 @@ function formatDateDisplay(dateString) {
 }
 
 /**
+ * 判断事件属于哪个时期
+ * @param {string} dateString - 日期字符串 (YYYY-MM 或 YYYY-MM-DD)
+ * @returns {string} 时期名称
+ */
+function getPeriod(dateString) {
+    // 标准化日期用于比较
+    let date;
+    if (dateString.match(/^\d{4}-\d{2}-\d{2}$/)) {
+        // 完整日期格式 YYYY-MM-DD
+        date = new Date(dateString);
+    } else if (dateString.match(/^\d{4}-\d{2}$/)) {
+        // 年月格式 YYYY-MM，使用该月第一天
+        date = new Date(dateString + '-01');
+    } else {
+        return '';
+    }
+    
+    // 时期分界点
+    const earlyEnd = new Date('2023-01-01');      // 早期结束：2023年1月1日（不包含）
+    const neteaseEnd = new Date('2024-10-01');    // 网易时期结束：2024年10月1日（不包含）
+    const javaEnd = new Date('2026-03-15');       // Java时期结束：2026年3月15日（用于包含3月14日）
+    
+    // 早期：2020年8月23日到2023年1月（不包含2023年1月）
+    if (date < earlyEnd) {
+        return '早期';
+    }
+    
+    // 网易时期：2023年1月到2024年10月（不包含2024年10月）
+    if (date >= earlyEnd && date < neteaseEnd) {
+        return '网易时期';
+    }
+    
+    // Java时期：2024年10月到2026年3月14日（包含2026年3月14日）
+    if (date >= neteaseEnd && date < javaEnd) {
+        return 'Java时期';
+    }
+    
+    return '';
+}
+
+/**
  * 初始化时间轴
  */
 export function initTimeline() {
@@ -202,6 +243,8 @@ export function initTimeline() {
         timeline.innerHTML = sortedEvents.map((event, index) => {
             const dateDisplay = formatDateDisplay(event.date);
             const originalIndex = timelineEvents.indexOf(event);
+            const period = getPeriod(event.date);
+            const periodTag = period ? ` <span class="timeline-period">{${period}}</span>` : '';
 
             return `
                 <div class="timeline-item" data-index="${originalIndex}">
@@ -209,7 +252,7 @@ export function initTimeline() {
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
                         <div class="timeline-event" onclick="window.showEventDetail(${originalIndex})">
-                            ${event.title}
+                            ${event.title}${periodTag}
                         </div>
                     </div>
                 </div>
