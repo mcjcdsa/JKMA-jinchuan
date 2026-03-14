@@ -7,9 +7,46 @@ let currentConfig = null;
 let currentRequestId = null;
 let autoRefreshInterval = null;
 
+// 检查是否在Electron环境中
+function checkElectronEnvironment() {
+    if (typeof window.electronAPI === 'undefined') {
+        // 不在Electron环境中，显示提示
+        document.body.innerHTML = `
+            <div style="display: flex; align-items: center; justify-content: center; height: 100vh; flex-direction: column; font-family: 'Microsoft YaHei', sans-serif; background: #f5f5f5;">
+                <div style="background: white; padding: 40px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); max-width: 600px; text-align: center;">
+                    <h1 style="color: #dc2626; margin-bottom: 20px;">⚠️ 运行环境错误</h1>
+                    <p style="color: #666; font-size: 16px; line-height: 1.6; margin-bottom: 30px;">
+                        此应用需要在Electron环境中运行，不能直接在浏览器中打开。
+                    </p>
+                    <div style="background: #f0f9ff; border-left: 4px solid #3b82f6; padding: 20px; margin-bottom: 30px; text-align: left;">
+                        <h3 style="color: #1e40af; margin-top: 0;">正确的运行方式：</h3>
+                        <ol style="color: #666; line-height: 2;">
+                            <li>打开终端（命令提示符或PowerShell）</li>
+                            <li>进入项目目录：<code style="background: #e5e7eb; padding: 2px 6px; border-radius: 3px;">cd F:\\jchtmlcss\\control-center</code></li>
+                            <li>安装依赖：<code style="background: #e5e7eb; padding: 2px 6px; border-radius: 3px;">npm install</code></li>
+                            <li>运行应用：<code style="background: #e5e7eb; padding: 2px 6px; border-radius: 3px;">npm start</code></li>
+                        </ol>
+                    </div>
+                    <div style="background: #fef3c7; border-left: 4px solid #f59e0b; padding: 15px; text-align: left;">
+                        <p style="margin: 0; color: #92400e;">
+                            <strong>注意：</strong>如果还没有安装Node.js，请先访问 
+                            <a href="https://nodejs.org" target="_blank" style="color: #3b82f6;">nodejs.org</a> 
+                            下载安装。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        `;
+        return false;
+    }
+    return true;
+}
+
 // 初始化
 document.addEventListener('DOMContentLoaded', () => {
-    init();
+    if (checkElectronEnvironment()) {
+        init();
+    }
 });
 
 /**

@@ -99,24 +99,61 @@ function createWindow() {
 async function connectDatabase(config) {
     try {
         if (dbConnection) {
-            await dbConnection.end();
+            try {
+                await dbConnection.end();
+            } catch (e) {
+                // 忽略断开连接错误
+            }
+            dbConnection = null;
         }
 
-        dbConnection = await mysql.createConnection({
+        // 设置连接超时（10秒）
+        const connectionConfig = {
             host: config.host,
             port: config.port,
             user: config.user,
             password: config.password,
             database: config.database,
-            charset: 'utf8mb4'
-        });
+            charset: 'utf8mb4',
+            connectTimeout: 10000, // 10秒超时
+            acquireTimeout: 10000
+        };
+
+        dbConnection = await mysql.createConnection(connectionConfig);
 
         // 测试连接
-        await dbConnection.ping();
+        await Promise.race([
+            dbConnection.ping(),
+            new Promise((_, reject) => 
+                setTimeout(() => reject(new Error('连接超时')), 10000)
+            )
+        ]);
+
         return { success: true, message: '数据库连接成功' };
     } catch (error) {
         console.error('数据库连接失败:', error);
-        return { success: false, message: `数据库连接失败: ${error.message}` };
+        if (dbConnection) {
+            try {
+                await dbConnection.end();
+            } catch (e) {
+                // 忽略断开连接错误
+            }
+            dbConnection = null;
+        }
+        
+        // 提供更友好的错误信息
+        let errorMessage = error.message;
+        if (error.code === 'ECONNREFUSED') {
+            errorMessage = '无法连接到数据库服务器，请检查地址和端口';
+        } else if (error.code === 'ER_ACCESS_DENIED_ERROR') {
+            errorMessage = '数据库访问被拒绝，请检查用户名和密码';
+        } else if (error.code === 'ER_BAD_DB_ERROR') {
+            errorMessage = '数据库不存在，请检查数据库名称';
+        } else if (error.message.includes('timeout') || error.message.includes('超时')) {
+            errorMessage = '连接超时，请检查网络连接和服务器地址';
+        }
+        
+        return { success: false, message: `数据库连接失败: ${errorMessage}` };
     }
 }
 
@@ -138,16 +175,47 @@ function connectRCON(config) {
         try {
             if (rconConnection) {
                 rconConnection.disconnect();
+                rconConnection = null;
             }
+
+            // 设置超时（10秒）
+            const timeout = setTimeout(() => {
+                if (rconConnection) {
+                    try {
+                        rconConnection.disconnect();
+                    } catch (e) {
+                        // 忽略断开连接错误
+                    }
+                    rconConnection = null;
+                }
+                reject({ success: false, message: 'RCON连接超时，请检查服务器地址和端口' });
+            }, 10000);
 
             rconConnection = new Rcon(config.host, config.port, config.password);
 
             rconConnection.on('auth', () => {
+                clearTimeout(timeout);
                 resolve({ success: true, message: 'RCON连接成功' });
             });
 
             rconConnection.on('error', (error) => {
-                reject({ success: false, message: `RCON连接失败: ${error.message}` });
+                clearTimeout(timeout);
+                if (rconConnection) {
+                    try {
+                        rconConnection.disconnect();
+                    } catch (e) {
+                        // 忽略断开连接错误
+                    }
+                    rconConnection = null;
+                }
+                reject({ success: false, message: `RCON连接失败: ${error.message || '未知错误'}` });
+            });
+
+            rconConnection.on('end', () => {
+                clearTimeout(timeout);
+                if (rconConnection) {
+                    rconConnection = null;
+                }
             });
 
             rconConnection.connect();
@@ -177,9 +245,20 @@ function executeMinecraftCommand(command) {
             return;
         }
 
-        rconConnection.send(command, (response) => {
-            resolve({ success: true, data: response });
-        });
+        // 设置超时（5秒）
+        const timeout = setTimeout(() => {
+            reject({ success: false, message: '命令执行超时' });
+        }, 5000);
+
+        try {
+            rconConnection.send(command, (response) => {
+                clearTimeout(timeout);
+                resolve({ success: true, data: response || '命令执行成功' });
+            });
+        } catch (error) {
+            clearTimeout(timeout);
+            reject({ success: false, message: `命令执行失败: ${error.message}` });
+        }
     });
 }
 
