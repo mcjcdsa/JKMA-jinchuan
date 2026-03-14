@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="JKMA都市圈|金川市黑名单成员，查看被列入黑名单的成员信息及原因。">
+    <meta name="keywords" content="JKMA,都市圈,金川市,黑名单,成员">
+    <meta name="author" content="JKMA都市圈|金川市">
+    
+    <!-- Open Graph标签 -->
+    <meta property="og:title" content="黑名单 - JKMA都市圈|金川市官方网站">
+    <meta property="og:description" content="JKMA都市圈|金川市黑名单成员，查看被列入黑名单的成员信息及原因。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://103.39.66.12:13626/blacklist.html">
+    <meta property="og:image" content="http://103.39.66.12:13626/64018EEC5FC9515CE725726DC59EB387.jpeg">
+    <meta property="og:site_name" content="JKMA都市圈|金川市官方网站">
+    
+    <!-- Twitter Card标签 -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="黑名单 - JKMA都市圈|金川市官方网站">
+    <meta name="twitter:description" content="JKMA都市圈|金川市黑名单成员，查看被列入黑名单的成员信息及原因。">
+    
+    <!-- Canonical标签 -->
+    <link rel="canonical" href="http://103.39.66.12:13626/blacklist.html">
+    
+    <title>黑名单 - JKMA都市圈|金川市官方网站</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-header">
+            <h2 class="nav-title">JKMA都市圈|金川市</h2>
+        </div>
+        <div class="nav-container">
+            <a href="index.html" class="nav-link">主页</a>
+            <a href="activity.html" class="nav-link">活动</a>
+            <a href="team.html" class="nav-link">团队成员</a>
+            <a href="query.html" class="nav-link">城市查询</a>
+            <a href="news.html" class="nav-link">新闻动态</a>
+            <a href="join.html" class="nav-link">加入我们</a>
+            <a href="partner.html" class="nav-link">合作伙伴</a>
+            <a href="about.html" class="nav-link">关于我们</a>
+            <a href="blacklist.html" class="nav-link active">黑名单</a>
+            <a href="rules.html" class="nav-link">城市守则</a>
+        </div>
+    </nav>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">JKMA都市圈黑名单</h2>
+            <div class="blacklist-warning">
+                <p>⚠️ 以下成员因违反城市规定或行为不当，已被列入黑名单。请勿与黑名单成员进行任何形式的合作或交流。</p>
+            </div>
+            <div class="blacklist-members" id="blacklist-members">
+                <!-- 黑名单成员将通过JavaScript动态加载 -->
+            </div>
+        </div>
+    </section>
+
+    <script type="module">
+        import { init } from './js/main.js';
+        import { initBlacklist } from './js/blacklist.js';
+        
+        // 初始化通用功能
+        init();
+        
+        // 初始化黑名单页面
+        document.addEventListener('DOMContentLoaded', function() {
+            initBlacklist();
+        });
+    </script>
+    <button class="back-to-top" id="backToTop">↑</button>
+</body>
+</html>
+

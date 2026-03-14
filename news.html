@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="JKMA都市圈|金川市新闻动态，了解最新公告、活动更新和城市动态。">
+    <meta name="keywords" content="JKMA,都市圈,金川市,新闻,公告,动态,更新">
+    <meta name="author" content="JKMA都市圈|金川市">
+    
+    <!-- Open Graph标签 -->
+    <meta property="og:title" content="新闻动态 - JKMA都市圈|金川市官方网站">
+    <meta property="og:description" content="JKMA都市圈|金川市新闻动态，了解最新公告、活动更新和城市动态。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://103.39.66.12:13626/news.html">
+    <meta property="og:image" content="http://103.39.66.12:13626/64018EEC5FC9515CE725726DC59EB387.jpeg">
+    <meta property="og:site_name" content="JKMA都市圈|金川市官方网站">
+    
+    <!-- Twitter Card标签 -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="新闻动态 - JKMA都市圈|金川市官方网站">
+    <meta name="twitter:description" content="JKMA都市圈|金川市新闻动态，了解最新公告、活动更新和城市动态。">
+    
+    <!-- Canonical标签 -->
+    <link rel="canonical" href="http://103.39.66.12:13626/news.html">
+    
+    <title>新闻动态 - JKMA都市圈|金川市官方网站</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-header">
+            <h2 class="nav-title">JKMA都市圈|金川市</h2>
+        </div>
+        <div class="nav-container">
+            <a href="index.html" class="nav-link">主页</a>
+            <a href="activity.html" class="nav-link">活动</a>
+            <a href="team.html" class="nav-link">团队成员</a>
+            <a href="query.html" class="nav-link">城市查询</a>
+            <a href="news.html" class="nav-link active">新闻动态</a>
+            <a href="join.html" class="nav-link">加入我们</a>
+            <a href="partner.html" class="nav-link">合作伙伴</a>
+            <a href="about.html" class="nav-link">关于我们</a>
+            <a href="blacklist.html" class="nav-link">黑名单</a>
+            <a href="rules.html" class="nav-link">城市守则</a>
+        </div>
+    </nav>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">金川市新闻动态</h2>
+            
+            <div class="news-filter">
+                <button class="filter-btn active" data-filter="all">全部</button>
+                <button class="filter-btn" data-filter="announcement">公告</button>
+                <button class="filter-btn" data-filter="activity">活动</button>
+                <button class="filter-btn" data-filter="update">更新</button>
+            </div>
+
+            <div class="news-list" id="news-list">
+            </div>
+        </div>
+    </section>
+
+    <button class="back-to-top" id="backToTop">↑</button>
+
+    <script type="module">
+        import { init } from './js/main.js';
+        import { initNewsPage, filterNews } from './js/news.js';
+        
+        // 初始化通用功能
+        init();
+        
+        // 初始化新闻页面
+        document.addEventListener('DOMContentLoaded', function() {
+            initNewsPage();
+            
+            // 绑定筛选按钮
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const category = this.getAttribute('data-filter');
+                    filterNews(category, this);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+

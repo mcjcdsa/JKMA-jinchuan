@@ -1,0 +1,16 @@
+# 金川市官方网站 robots.txt
+
+# 允许所有搜索引擎抓取
+User-agent: *
+Allow: /
+
+# 禁止抓取404页面
+Disallow: /404.html
+
+# 禁止抓取临时文件和测试文件
+Disallow: /*.tmp$
+Disallow: /*.test$
+
+# 网站地图
+Sitemap: http://103.39.66.12:13626/sitemap.xml
+

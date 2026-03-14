@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="JKMA都市圈|金川市新闻详情">
+    <meta name="keywords" content="JKMA,都市圈,金川市,新闻,详情">
+    <meta name="author" content="JKMA都市圈|金川市">
+    
+    <!-- Open Graph标签 -->
+    <meta property="og:title" content="新闻详情 - JKMA都市圈|金川市官方网站">
+    <meta property="og:description" content="JKMA都市圈|金川市新闻详情">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="http://103.39.66.12:13626/news-detail.html">
+    <meta property="og:image" content="http://103.39.66.12:13626/64018EEC5FC9515CE725726DC59EB387.jpeg">
+    <meta property="og:site_name" content="JKMA都市圈|金川市官方网站">
+    
+    <!-- Twitter Card标签 -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="新闻详情 - JKMA都市圈|金川市官方网站">
+    <meta name="twitter:description" content="JKMA都市圈|金川市新闻详情">
+    
+    <!-- Canonical标签 -->
+    <link rel="canonical" href="http://103.39.66.12:13626/news-detail.html">
+    
+    <title>新闻详情 - JKMA都市圈|金川市官方网站</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-header">
+            <h2 class="nav-title">JKMA都市圈|金川市</h2>
+        </div>
+        <div class="nav-container">
+            <a href="index.html" class="nav-link">主页</a>
+            <a href="activity.html" class="nav-link">活动</a>
+            <a href="team.html" class="nav-link">团队成员</a>
+            <a href="query.html" class="nav-link">城市查询</a>
+            <a href="news.html" class="nav-link active">新闻动态</a>
+            <a href="join.html" class="nav-link">加入我们</a>
+            <a href="partner.html" class="nav-link">合作伙伴</a>
+            <a href="about.html" class="nav-link">关于我们</a>
+            <a href="blacklist.html" class="nav-link">黑名单</a>
+            <a href="rules.html" class="nav-link">城市守则</a>
+        </div>
+    </nav>
+
+    <section class="section">
+        <div class="container">
+            <div id="news-detail" class="news-detail">
+                <a href="news.html" class="back-link">← 返回新闻列表</a>
+                <div id="news-content"></div>
+            </div>
+        </div>
+    </section>
+
+    <button class="back-to-top" id="backToTop">↑</button>
+
+    <script type="module">
+        import { init } from './js/main.js';
+        import { addNewsStructuredData } from './js/seo.js';
+        
+        // 初始化通用功能
+        init();
+        
+        function loadNewsDetail() {
+            const newsStr = localStorage.getItem('currentNews');
+            if (!newsStr) {
+                window.location.href = 'news.html';
+                return;
+            }
+
+            const news = JSON.parse(newsStr);
+            const content = document.getElementById('news-content');
+            
+            // 更新页面标题和描述
+            document.title = news.title + ' - JKMA都市圈|金川市官方网站';
+            const metaDesc = document.querySelector('meta[name="description"]');
+            if (metaDesc) {
+                metaDesc.setAttribute('content', news.summary || news.content);
+            }
+            
+            content.innerHTML = `
+                <div class="news-detail-header">
+                    <div class="news-category ${news.category}">${getCategoryName(news.category)}</div>
+                    <h1 class="news-detail-title">${news.title}</h1>
+                    <div class="news-detail-meta">
+                        <span class="news-date">发布时间：${news.date}</span>
+                    </div>
+                </div>
+                <div class="news-detail-body">
+                    <p>${news.content}</p>
+                </div>
+            `;
+            
+            // 添加结构化数据
+            addNewsStructuredData(news);
+        }
+
+        function getCategoryName(category) {
+            const names = {
+                'announcement': '公告',
+                'activity': '活动',
+                'update': '更新'
+            };
+            return names[category] || '其他';
+        }
+
+        loadNewsDetail();
+    </script>
+</body>
+</html>
+

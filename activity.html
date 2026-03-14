@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="JKMA都市圈|金川市活动预告，了解最新活动信息和庆典倒计时。">
+    <meta name="keywords" content="JKMA,都市圈,金川市,活动,庆典,六周年">
+    <meta name="author" content="JKMA都市圈|金川市">
+    
+    <!-- Open Graph标签 -->
+    <meta property="og:title" content="活动 - JKMA都市圈|金川市官方网站">
+    <meta property="og:description" content="JKMA都市圈|金川市活动预告，了解最新活动信息和庆典倒计时。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://103.39.66.12:13626/activity.html">
+    <meta property="og:image" content="http://103.39.66.12:13626/64018EEC5FC9515CE725726DC59EB387.jpeg">
+    <meta property="og:site_name" content="JKMA都市圈|金川市官方网站">
+    
+    <!-- Twitter Card标签 -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="活动 - JKMA都市圈|金川市官方网站">
+    <meta name="twitter:description" content="JKMA都市圈|金川市活动预告，了解最新活动信息和庆典倒计时。">
+    
+    <!-- Canonical标签 -->
+    <link rel="canonical" href="http://103.39.66.12:13626/activity.html">
+    
+    <title>活动 - JKMA都市圈|金川市官方网站</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-header">
+            <h2 class="nav-title">JKMA都市圈|金川市</h2>
+        </div>
+        <div class="nav-container">
+            <a href="index.html" class="nav-link">主页</a>
+            <a href="activity.html" class="nav-link active">活动</a>
+            <a href="team.html" class="nav-link">团队成员</a>
+            <a href="query.html" class="nav-link">城市查询</a>
+            <a href="news.html" class="nav-link">新闻动态</a>
+            <a href="join.html" class="nav-link">加入我们</a>
+            <a href="partner.html" class="nav-link">合作伙伴</a>
+            <a href="about.html" class="nav-link">关于我们</a>
+            <a href="blacklist.html" class="nav-link">黑名单</a>
+            <a href="rules.html" class="nav-link">城市守则</a>
+        </div>
+    </nav>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">金川市活动预告</h2>
+            <div class="activity-content">
+                <p class="activity-info">
+                    <strong>2026年8月23日的金川市成立六周年庆典大会</strong>
+                </p>
+            </div>
+            <div class="countdown-section">
+                <h3 class="countdown-title">六周年庆典大会倒计时</h3>
+                <div id="celebration-countdown" class="countdown-display">剩余：计算中...</div>
+            </div>
+        </div>
+    </section>
+
+    <script type="module">
+        import { init } from './js/main.js';
+        import { initCountdown } from './js/timer.js';
+        
+        // 确保DOM加载完成后再初始化
+        function initPage() {
+            // 初始化通用功能
+            init();
+            
+            // 初始化庆典倒计时
+            initCountdown('celebration-countdown', '2026-08-23T00:00:00', '活动已开始！');
+            }
+
+        // DOM加载完成后执行
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initPage);
+                } else {
+            // DOM已经加载完成，直接执行
+            initPage();
+                }
+    </script>
+    <button class="back-to-top" id="backToTop">↑</button>
+</body>
+</html>
+

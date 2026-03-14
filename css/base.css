@@ -1,0 +1,122 @@
+/**
+ * 基础样式文件
+ * 包含CSS变量、重置样式等
+ */
+
+/* ========== CSS变量 ========== */
+:root {
+    /* 主色调 */
+    --color-primary: #1e3a8a;
+    --color-primary-light: #3b82f6;
+    --color-primary-dark: #1e40af;
+    --color-primary-bg: #e0f2fe;
+    --color-primary-border: #93c5fd;
+    --color-primary-light-bg: #dbeafe;
+    
+    /* 文本颜色 */
+    --color-text: #333;
+    --color-text-secondary: #666;
+    --color-text-muted: #999;
+    --color-text-light: #ffffff;
+    
+    /* 背景颜色 */
+    --color-bg: #ffffff;
+    --color-bg-white: #ffffff;
+    --color-bg-light: #f9fafb;
+    
+    /* 边框颜色 */
+    --color-border: #e5e7eb;
+    --color-border-light: #93c5fd;
+    
+    /* 状态颜色 */
+    --color-success: #10b981;
+    --color-success-bg: #d1fae5;
+    --color-error: #dc2626;
+    --color-error-bg: #fee2e2;
+    --color-warning: #f59e0b;
+    --color-warning-bg: #fef3c7;
+    --color-info: #3b82f6;
+    --color-info-bg: #dbeafe;
+    
+    /* 在线状态 */
+    --color-online: #10b981;
+    --color-offline: #9ca3af;
+    
+    /* 字体 */
+    --font-family: "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    --font-size-base: 16px;
+    --font-size-small: 0.9em;
+    --font-size-large: 1.2em;
+    --font-size-xl: 1.5em;
+    --font-size-xxl: 2em;
+    --font-size-xxxl: 3em;
+    
+    /* 间距 */
+    --spacing-xs: 5px;
+    --spacing-sm: 10px;
+    --spacing-md: 20px;
+    --spacing-lg: 30px;
+    --spacing-xl: 40px;
+    
+    /* 圆角 */
+    --radius-sm: 5px;
+    --radius-md: 10px;
+    --radius-lg: 15px;
+    --radius-full: 50%;
+    
+    /* 阴影 */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 6px 12px rgba(0, 0, 0, 0.15);
+    --shadow-xl: 0 8px 16px rgba(0, 0, 0, 0.2);
+    
+    /* 过渡 */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.4s ease;
+    
+    /* 断点 */
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+}
+
+/* ========== 重置样式 ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    line-height: 1.5;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ========== 图片懒加载 ========== */
+img[loading="lazy"] {
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+}
+
+img[loading="lazy"].loaded {
+    opacity: 1;
+}
+
+/* ========== 浏览器兼容性 ========== */
+/* 确保旧版浏览器支持CSS变量 */
+@supports not (--css: variables) {
+    /* 为不支持CSS变量的浏览器提供回退 */
+    body {
+        font-family: "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+        color: #333;
+        background-color: #ffffff;
+    }
+}
+

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="了解JKMA都市圈|金川市的历史、发展规划、特色和成就。">
+    <meta name="keywords" content="JKMA,都市圈,金川市,关于我们,历史,发展规划,特色,成就">
+    <meta name="author" content="JKMA都市圈|金川市">
+    
+    <!-- Open Graph标签 -->
+    <meta property="og:title" content="关于我们 - JKMA都市圈|金川市官方网站">
+    <meta property="og:description" content="了解JKMA都市圈|金川市的历史、发展规划、特色和成就。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://103.39.66.12:13626/about.html">
+    <meta property="og:image" content="http://103.39.66.12:13626/64018EEC5FC9515CE725726DC59EB387.jpeg">
+    <meta property="og:site_name" content="JKMA都市圈|金川市官方网站">
+    
+    <!-- Twitter Card标签 -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="关于我们 - JKMA都市圈|金川市官方网站">
+    <meta name="twitter:description" content="了解JKMA都市圈|金川市的历史、发展规划、特色和成就。">
+    
+    <!-- Canonical标签 -->
+    <link rel="canonical" href="http://103.39.66.12:13626/about.html">
+    
+    <title>关于我们 - JKMA都市圈|金川市官方网站</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-header">
+            <h2 class="nav-title">JKMA都市圈|金川市</h2>
+        </div>
+        <div class="nav-container">
+            <a href="index.html" class="nav-link">主页</a>
+            <a href="activity.html" class="nav-link">活动</a>
+            <a href="team.html" class="nav-link">团队成员</a>
+            <a href="query.html" class="nav-link">城市查询</a>
+            <a href="news.html" class="nav-link">新闻动态</a>
+            <a href="join.html" class="nav-link">加入我们</a>
+            <a href="partner.html" class="nav-link">合作伙伴</a>
+            <a href="about.html" class="nav-link active">关于我们</a>
+            <a href="blacklist.html" class="nav-link">黑名单</a>
+            <a href="rules.html" class="nav-link">城市守则</a>
+        </div>
+    </nav>
+
+    <section class="section">
+        <div class="container">
+            <h1 class="section-title">关于JKMA都市圈|金川市</h1>
+            
+            <!-- 城市历史时间轴 -->
+            <div class="about-section">
+                <h2 class="about-section-title">城市历史</h2>
+                <div class="timeline-container">
+                    <div class="timeline" id="timeline">
+                        <div style="text-align: center; padding: 40px; color: #666;">
+                            <p>正在加载历史事件...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 城市发展规划 -->
+            <div class="about-section" style="display: none;">
+                <h2 class="about-section-title">城市发展规划</h2>
+                <div class="development-plan">
+                    <!-- 内容待添加 -->
+                </div>
+            </div>
+
+            <!-- 城市特色展示 -->
+            <div class="about-section" style="display: none;">
+                <h2 class="about-section-title">城市特色</h2>
+                <div class="features-grid">
+                    <!-- 内容待添加 -->
+                </div>
+            </div>
+
+            <!-- 城市成就展示 -->
+            <div class="about-section" style="display: none;">
+                <h2 class="about-section-title">城市成就</h2>
+                <div class="achievements-grid">
+                    <!-- 内容待添加 -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 事件详情模态框 -->
+    <div id="event-modal" class="event-modal">
+        <div class="modal-content">
+            <span class="modal-close" id="modal-close">&times;</span>
+            <h2 class="modal-title" id="modal-title"></h2>
+            <div class="modal-date" id="modal-date"></div>
+            <div class="modal-description" id="modal-description"></div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { init } from './js/main.js';
+        import { initTimeline } from './js/timeline.js';
+        
+        // 初始化通用功能
+        init();
+        
+        // 初始化时间轴
+        function initPage() {
+            const timeline = document.getElementById('timeline');
+            if (!timeline) {
+                console.error('时间轴元素未找到');
+                return;
+            }
+            
+            try {
+                initTimeline();
+                console.log('时间轴初始化成功');
+            } catch (error) {
+                console.error('时间轴初始化失败:', error);
+                timeline.innerHTML = `
+                    <div style="text-align: center; padding: 40px; color: #dc2626;">
+                        <h3 style="margin-bottom: 15px;">⚠️ 时间轴加载失败</h3>
+                        <p style="margin-bottom: 10px;">请使用HTTP服务器访问此页面</p>
+                        <p style="font-size: 0.9em; color: #666;">
+                            双击运行 <strong>start-server.py</strong> 或 <strong>start-server.bat</strong><br>
+                            然后访问 <strong>http://localhost:8000/about.html</strong>
+                        </p>
+                    </div>
+                `;
+            }
+        }
+        
+        // DOM加载完成后执行
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initPage);
+        } else {
+            // DOM已经加载完成，延迟一点确保所有元素都已准备好
+            setTimeout(initPage, 100);
+        }
+    </script>
+    <button class="back-to-top" id="backToTop">↑</button>
+</body>
+</html>
+
