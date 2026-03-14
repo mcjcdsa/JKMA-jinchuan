@@ -1,0 +1,264 @@
+/**
+ * 建设规范页面样式
+ */
+
+/* ========== 规范介绍 ========== */
+.specifications-intro {
+    background-color: var(--color-primary-light-bg);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-xl);
+    border-left: 4px solid var(--color-primary);
+}
+
+.specifications-intro p {
+    margin: 0;
+    color: var(--color-text);
+    line-height: 1.8;
+    font-size: var(--font-size-base);
+}
+
+/* ========== 规范容器 ========== */
+.specifications-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+}
+
+/* ========== 章节样式 ========== */
+.spec-section {
+    background-color: var(--color-bg-white);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--color-border);
+}
+
+.spec-section-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+    padding-bottom: var(--spacing-lg);
+    border-bottom: 3px solid var(--color-primary-light-bg);
+}
+
+.spec-section-icon {
+    font-size: 2.5rem;
+    line-height: 1;
+}
+
+.spec-section-title {
+    font-size: var(--font-size-xxl);
+    color: var(--color-primary);
+    font-weight: bold;
+    margin: 0;
+}
+
+.spec-section-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+}
+
+/* ========== 子章节样式 ========== */
+.spec-subsection-wrapper {
+    background-color: var(--color-bg-light);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--color-primary);
+}
+
+.spec-subsection-main-title {
+    font-size: var(--font-size-xl);
+    color: var(--color-primary);
+    font-weight: 600;
+    margin: 0 0 var(--spacing-lg) 0;
+    padding-bottom: var(--spacing-md);
+    border-bottom: 2px solid var(--color-primary-light-bg);
+}
+
+.spec-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+/* ========== 规范项目样式 ========== */
+.spec-item {
+    background-color: var(--color-bg-white);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-normal);
+}
+
+.spec-item:hover {
+    box-shadow: var(--shadow-sm);
+    transform: translateX(4px);
+}
+
+.spec-item.level-0 {
+    margin-left: 0;
+}
+
+.spec-item.level-1 {
+    margin-left: var(--spacing-lg);
+    background-color: var(--color-bg-light);
+}
+
+.spec-item.level-2 {
+    margin-left: calc(var(--spacing-lg) * 2);
+    background-color: var(--color-bg-white);
+}
+
+.spec-item-content {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+    line-height: 1.8;
+}
+
+.spec-item-icon {
+    font-size: var(--font-size-large);
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.spec-item-text {
+    flex: 1;
+    color: var(--color-text);
+    font-size: var(--font-size-base);
+}
+
+/* ========== 不同类型项目的样式 ========== */
+.spec-item-rule {
+    border-left: 3px solid #3b82f6;
+}
+
+.spec-item-requirement {
+    border-left: 3px solid #10b981;
+    font-weight: 500;
+}
+
+.spec-item-standard {
+    border-left: 3px solid #8b5cf6;
+}
+
+.spec-item-limit {
+    border-left: 3px solid #f59e0b;
+}
+
+.spec-item-speed {
+    border-left: 3px solid #ef4444;
+    background-color: #fef2f2;
+}
+
+.spec-item-description {
+    border-left: 3px solid #6366f1;
+    background-color: var(--color-primary-light-bg);
+}
+
+.spec-item-note {
+    border-left: 3px solid #06b6d4;
+    background-color: #ecfeff;
+    font-style: italic;
+}
+
+.spec-item-condition {
+    border-left: 3px solid #14b8a6;
+    background-color: #f0fdfa;
+}
+
+.spec-item-normal {
+    border-left: 3px solid var(--color-border);
+}
+
+/* ========== 子章节内容 ========== */
+.spec-subsection {
+    margin-top: var(--spacing-md);
+}
+
+.spec-subsection-title {
+    font-size: var(--font-size-large);
+    color: var(--color-primary);
+    font-weight: 600;
+    margin: 0 0 var(--spacing-md) 0;
+}
+
+.spec-subsection-items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    margin-left: var(--spacing-md);
+}
+
+.spec-description {
+    background-color: var(--color-primary-light-bg);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-sm);
+    margin: var(--spacing-md) 0;
+}
+
+.spec-description-title {
+    font-size: var(--font-size-large);
+    color: var(--color-primary);
+    font-weight: 600;
+    margin: 0 0 var(--spacing-sm) 0;
+}
+
+.spec-description-content {
+    margin: 0;
+    color: var(--color-text);
+    line-height: 1.8;
+    font-size: var(--font-size-base);
+}
+
+.empty-state {
+    text-align: center;
+    padding: var(--spacing-xl);
+    color: var(--color-text-muted);
+    background-color: var(--color-bg-light);
+    border-radius: var(--radius-md);
+}
+
+/* ========== 响应式设计 ========== */
+@media (max-width: 768px) {
+    .spec-section {
+        padding: var(--spacing-md);
+    }
+    
+    .spec-section-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .spec-section-icon {
+        font-size: 2rem;
+    }
+    
+    .spec-section-title {
+        font-size: var(--font-size-xl);
+    }
+    
+    .spec-subsection-main-title {
+        font-size: var(--font-size-large);
+    }
+    
+    .spec-item.level-1 {
+        margin-left: var(--spacing-md);
+    }
+    
+    .spec-item.level-2 {
+        margin-left: var(--spacing-lg);
+    }
+    
+    .spec-item-content {
+        flex-direction: column;
+        gap: var(--spacing-xs);
+    }
+    
+    .spec-item-icon {
+        align-self: flex-start;
+    }
+}
+

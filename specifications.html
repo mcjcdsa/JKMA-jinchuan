@@ -3,28 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="JKMA都市圈|金川市黑名单成员，查看被列入黑名单的成员信息及原因。">
-    <meta name="keywords" content="JKMA,都市圈,金川市,黑名单,成员">
+    <meta name="description" content="JKMA都市圈|金川市轨道交通建设规范，了解地铁、车辆段、区间、车站、线路等建设标准。">
+    <meta name="keywords" content="JKMA,都市圈,金川市,建设规范,轨道交通,地铁,技术规范">
     <meta name="author" content="JKMA都市圈|金川市">
     
     <!-- Open Graph标签 -->
-    <meta property="og:title" content="黑名单 - JKMA都市圈|金川市官方网站">
-    <meta property="og:description" content="JKMA都市圈|金川市黑名单成员，查看被列入黑名单的成员信息及原因。">
+    <meta property="og:title" content="建设规范 - JKMA都市圈|金川市官方网站">
+    <meta property="og:description" content="JKMA都市圈|金川市轨道交通建设规范，了解地铁、车辆段、区间、车站、线路等建设标准。">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="http://103.39.66.12:13626/blacklist.html">
+    <meta property="og:url" content="http://103.39.66.12:13626/specifications.html">
     <meta property="og:image" content="http://103.39.66.12:13626/64018EEC5FC9515CE725726DC59EB387.jpeg">
     <meta property="og:site_name" content="JKMA都市圈|金川市官方网站">
     
     <!-- Twitter Card标签 -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="黑名单 - JKMA都市圈|金川市官方网站">
-    <meta name="twitter:description" content="JKMA都市圈|金川市黑名单成员，查看被列入黑名单的成员信息及原因。">
+    <meta name="twitter:title" content="建设规范 - JKMA都市圈|金川市官方网站">
+    <meta name="twitter:description" content="JKMA都市圈|金川市轨道交通建设规范，了解地铁、车辆段、区间、车站、线路等建设标准。">
     
     <!-- Canonical标签 -->
-    <link rel="canonical" href="http://103.39.66.12:13626/blacklist.html">
+    <link rel="canonical" href="http://103.39.66.12:13626/specifications.html">
     
-    <title>黑名单 - JKMA都市圈|金川市官方网站</title>
+    <title>建设规范 - JKMA都市圈|金川市官方网站</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/specifications.css">
 </head>
 <body>
     <nav class="navbar">
@@ -41,34 +42,36 @@
             <a href="partner.html" class="nav-link">合作伙伴</a>
             <a href="about.html" class="nav-link">关于我们</a>
             <a href="permission.html" class="nav-link">权限申请</a>
-            <a href="blacklist.html" class="nav-link active">黑名单</a>
+            <a href="blacklist.html" class="nav-link">黑名单</a>
             <a href="rules.html" class="nav-link">城市守则</a>
-            <a href="specifications.html" class="nav-link">建设规范</a>
+            <a href="specifications.html" class="nav-link active">建设规范</a>
         </div>
     </nav>
 
     <section class="section">
         <div class="container">
-            <h2 class="section-title">JKMA都市圈黑名单</h2>
-            <div class="blacklist-warning">
-                <p>⚠️ 以下成员因违反城市规定或行为不当，已被列入黑名单。请勿与黑名单成员进行任何形式的合作或交流。</p>
+            <h1 class="section-title">金川轨道交通建设规范</h1>
+            
+            <div class="specifications-intro">
+                <p>本文档规定了金川市轨道交通（地铁）建设的各项技术标准和规范要求，所有建设活动必须严格遵守本规范。</p>
             </div>
-            <div class="blacklist-members" id="blacklist-members">
-                <!-- 黑名单成员将通过JavaScript动态加载 -->
+
+            <div class="specifications-container" id="specifications-container">
+                <!-- 规范内容将通过JavaScript动态加载 -->
             </div>
         </div>
     </section>
 
     <script type="module">
         import { init } from './js/main.js';
-        import { initBlacklist } from './js/blacklist.js';
+        import { initSpecifications } from './js/specifications.js';
         
         // 初始化通用功能
         init();
         
-        // 初始化黑名单页面
+        // 初始化建设规范页面
         document.addEventListener('DOMContentLoaded', function() {
-            initBlacklist();
+            initSpecifications();
         });
     </script>
     <button class="back-to-top" id="backToTop">↑</button>
