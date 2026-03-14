@@ -1,0 +1,498 @@
+/**
+ * 权限申请页面样式
+ */
+
+/* ========== 权限申请标签页 ========== */
+.permission-tabs {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+    border-bottom: 2px solid var(--color-border);
+}
+
+.tab-btn {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-base);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: var(--font-family);
+}
+
+.tab-btn:hover {
+    color: var(--color-primary);
+    background: var(--color-bg-light);
+}
+
+.tab-btn.active {
+    color: var(--color-primary);
+    border-bottom-color: var(--color-primary);
+    font-weight: 600;
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========== 申请说明 ========== */
+.permission-notice {
+    background: var(--color-info-bg);
+    border: 1px solid var(--color-primary-border);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.permission-notice h3 {
+    margin-top: 0;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-primary-dark);
+    font-size: var(--font-size-large);
+}
+
+.notice-list {
+    margin: 0;
+    padding-left: var(--spacing-lg);
+    color: var(--color-text);
+}
+
+.notice-list li {
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.6;
+}
+
+.notice-list li:last-child {
+    margin-bottom: 0;
+}
+
+/* ========== 表单样式 ========== */
+.permission-form-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.permission-form {
+    background: var(--color-bg-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-xl);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.form-group {
+    margin-bottom: var(--spacing-lg);
+}
+
+.form-group:last-of-type {
+    margin-bottom: var(--spacing-xl);
+}
+
+.form-label {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    font-weight: 500;
+    color: var(--color-text);
+    font-size: var(--font-size-base);
+}
+
+.required {
+    color: var(--color-error);
+    margin-left: 2px;
+}
+
+.optional {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-small);
+    font-weight: normal;
+}
+
+.form-input,
+.form-textarea {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-base);
+    font-family: var(--font-family);
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.form-input.error,
+.form-textarea.error {
+    border-color: var(--color-error);
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-hint {
+    display: block;
+    margin-top: var(--spacing-xs);
+    font-size: var(--font-size-small);
+    color: var(--color-text-muted);
+}
+
+.form-error {
+    display: block;
+    margin-top: var(--spacing-xs);
+    font-size: var(--font-size-small);
+    color: var(--color-error);
+    min-height: 20px;
+}
+
+/* ========== 验证码样式 ========== */
+.captcha-container {
+    display: flex;
+    gap: var(--spacing-sm);
+    align-items: flex-start;
+}
+
+.captcha-input {
+    flex: 1;
+}
+
+.captcha-display {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--color-bg-light);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    min-width: 120px;
+    justify-content: center;
+    user-select: none;
+    font-family: 'Courier New', monospace;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: var(--color-primary-dark);
+}
+
+.captcha-refresh {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.captcha-refresh:hover {
+    transform: rotate(180deg);
+}
+
+.captcha-refresh:active {
+    transform: rotate(360deg);
+}
+
+/* ========== 表单按钮 ========== */
+.form-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-xl);
+}
+
+.btn {
+    flex: 1;
+    padding: var(--spacing-md) var(--spacing-lg);
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-base);
+    font-family: var(--font-family);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+}
+
+.btn-primary {
+    background: var(--color-primary);
+    color: var(--color-text-light);
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: var(--color-primary-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
+}
+
+.btn-primary:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.btn-primary:disabled {
+    background: var(--color-text-muted);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.btn-secondary {
+    background: var(--color-bg-light);
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+}
+
+.btn-secondary:hover {
+    background: var(--color-border);
+}
+
+.btn-loading {
+    display: inline-block;
+}
+
+/* ========== 提交结果 ========== */
+.submit-result {
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    display: none;
+}
+
+.submit-result.success {
+    display: block;
+    background: var(--color-success-bg);
+    border: 1px solid var(--color-success);
+    color: var(--color-success);
+}
+
+.submit-result.error {
+    display: block;
+    background: var(--color-error-bg);
+    border: 1px solid var(--color-error);
+    color: var(--color-error);
+}
+
+.submit-result.info {
+    display: block;
+    background: var(--color-info-bg);
+    border: 1px solid var(--color-info);
+    color: var(--color-info);
+}
+
+/* ========== 查询状态 ========== */
+.query-status-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.query-form {
+    background: var(--color-bg-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-lg);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.query-form h3 {
+    margin-top: 0;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-primary-dark);
+}
+
+.query-hint {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-lg);
+    font-size: var(--font-size-base);
+}
+
+.input-group {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.query-input {
+    flex: 1;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-base);
+    font-family: var(--font-family);
+    transition: all 0.3s ease;
+}
+
+.query-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.query-btn {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background: var(--color-primary);
+    color: var(--color-text-light);
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-base);
+    font-family: var(--font-family);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    min-height: 44px;
+}
+
+.query-btn:hover:not(:disabled) {
+    background: var(--color-primary-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
+}
+
+.query-btn:disabled {
+    background: var(--color-text-muted);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.query-result {
+    background: var(--color-bg-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-xl);
+    min-height: 100px;
+    display: none;
+}
+
+.query-result.show {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+.query-result.empty {
+    text-align: center;
+    color: var(--color-text-muted);
+    padding: var(--spacing-xl);
+}
+
+.query-result.error {
+    background: var(--color-error-bg);
+    border-color: var(--color-error);
+    color: var(--color-error);
+}
+
+.query-result.success {
+    background: var(--color-success-bg);
+    border-color: var(--color-success);
+}
+
+.status-info {
+    margin-bottom: var(--spacing-md);
+}
+
+.status-info:last-child {
+    margin-bottom: 0;
+}
+
+.status-label {
+    font-weight: 600;
+    color: var(--color-text);
+    margin-right: var(--spacing-sm);
+}
+
+.status-value {
+    color: var(--color-text-secondary);
+}
+
+.status-badge {
+    display: inline-block;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-small);
+    font-weight: 500;
+    margin-left: var(--spacing-sm);
+}
+
+.status-badge.pending {
+    background: var(--color-warning-bg);
+    color: var(--color-warning);
+}
+
+.status-badge.approved {
+    background: var(--color-success-bg);
+    color: var(--color-success);
+}
+
+.status-badge.rejected {
+    background: var(--color-error-bg);
+    color: var(--color-error);
+}
+
+.status-badge.processed {
+    background: var(--color-info-bg);
+    color: var(--color-info);
+}
+
+/* ========== 响应式设计 ========== */
+@media (max-width: 768px) {
+    .permission-tabs {
+        flex-direction: column;
+    }
+
+    .tab-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .permission-form {
+        padding: var(--spacing-md);
+    }
+
+    .captcha-container {
+        flex-direction: column;
+    }
+
+    .captcha-display {
+        width: 100%;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .input-group {
+        flex-direction: column;
+    }
+
+    .query-btn {
+        width: 100%;
+    }
+}
+

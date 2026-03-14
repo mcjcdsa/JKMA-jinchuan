@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="JKMA都市圈|金川市游戏账号权限申请系统，申请Minecraft Java版游戏权限。">
+    <meta name="keywords" content="JKMA,都市圈,金川市,权限申请,游戏权限,Minecraft">
+    <meta name="author" content="JKMA都市圈|金川市">
+    
+    <!-- Open Graph标签 -->
+    <meta property="og:title" content="权限申请 - JKMA都市圈|金川市官方网站">
+    <meta property="og:description" content="JKMA都市圈|金川市游戏账号权限申请系统，申请Minecraft Java版游戏权限。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mcjcdsa.github.io/JKMA-jinchuan/permission.html">
+    <meta property="og:image" content="https://mcjcdsa.github.io/JKMA-jinchuan/64018EEC5FC9515CE725726DC59EB387.jpeg">
+    <meta property="og:site_name" content="JKMA都市圈|金川市官方网站">
+    
+    <!-- Twitter Card标签 -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="权限申请 - JKMA都市圈|金川市官方网站">
+    <meta name="twitter:description" content="JKMA都市圈|金川市游戏账号权限申请系统，申请Minecraft Java版游戏权限。">
+    
+    <!-- Canonical标签 -->
+    <link rel="canonical" href="https://mcjcdsa.github.io/JKMA-jinchuan/permission.html">
+    
+    <title>权限申请 - JKMA都市圈|金川市官方网站</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/permission.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-header">
+            <h2 class="nav-title">JKMA都市圈|金川市</h2>
+        </div>
+        <div class="nav-container">
+            <a href="index.html" class="nav-link">主页</a>
+            <a href="activity.html" class="nav-link">活动</a>
+            <a href="team.html" class="nav-link">团队成员</a>
+            <a href="query.html" class="nav-link">城市查询</a>
+            <a href="news.html" class="nav-link">新闻动态</a>
+            <a href="join.html" class="nav-link">加入我们</a>
+            <a href="partner.html" class="nav-link">合作伙伴</a>
+            <a href="about.html" class="nav-link">关于我们</a>
+            <a href="permission.html" class="nav-link active">权限申请</a>
+            <a href="blacklist.html" class="nav-link">黑名单</a>
+            <a href="rules.html" class="nav-link">城市守则</a>
+        </div>
+    </nav>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">游戏账号权限申请</h2>
+            
+            <div class="permission-tabs">
+                <button class="tab-btn active" data-tab="apply">提交申请</button>
+                <button class="tab-btn" data-tab="query">查询状态</button>
+            </div>
+
+            <!-- 申请表单标签页 -->
+            <div id="apply-tab" class="tab-content active">
+                <div class="permission-form-container">
+                    <div class="permission-notice">
+                        <h3>申请说明</h3>
+                        <ul class="notice-list">
+                            <li>请填写您的Minecraft Java版游戏账号名称（1-16个字符，仅支持字母、数字、下划线）</li>
+                            <li>QQ号为可选，用于联系和通知申请结果</li>
+                            <li>申请理由为可选，建议填写申请权限的原因</li>
+                            <li>同一账号24小时内只能提交一次申请</li>
+                            <li>提交申请后，管理员会在1-3个工作日内审核</li>
+                        </ul>
+                    </div>
+
+                    <form id="permission-form" class="permission-form">
+                        <div class="form-group">
+                            <label for="minecraft-username" class="form-label">
+                                游戏账号名称 <span class="required">*</span>
+                            </label>
+                            <input 
+                                type="text" 
+                                id="minecraft-username" 
+                                name="minecraft_username" 
+                                class="form-input" 
+                                placeholder="例如：PlayerName"
+                                maxlength="16"
+                                required
+                                autocomplete="off"
+                            >
+                            <span class="form-hint">1-16个字符，仅支持字母、数字、下划线</span>
+                            <span class="form-error" id="username-error"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="qq-number" class="form-label">
+                                QQ号 <span class="optional">（可选）</span>
+                            </label>
+                            <input 
+                                type="text" 
+                                id="qq-number" 
+                                name="qq_number" 
+                                class="form-input" 
+                                placeholder="例如：123456789"
+                                maxlength="15"
+                                autocomplete="off"
+                            >
+                            <span class="form-hint">用于联系和通知申请结果</span>
+                            <span class="form-error" id="qq-error"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="reason" class="form-label">
+                                申请理由 <span class="optional">（可选）</span>
+                            </label>
+                            <textarea 
+                                id="reason" 
+                                name="reason" 
+                                class="form-textarea" 
+                                placeholder="请说明申请权限的原因..."
+                                rows="4"
+                                maxlength="500"
+                            ></textarea>
+                            <span class="form-hint">最多500个字符</span>
+                            <span class="form-error" id="reason-error"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="captcha" class="form-label">
+                                验证码 <span class="required">*</span>
+                            </label>
+                            <div class="captcha-container">
+                                <input 
+                                    type="text" 
+                                    id="captcha" 
+                                    name="captcha" 
+                                    class="form-input captcha-input" 
+                                    placeholder="请输入验证码"
+                                    maxlength="10"
+                                    required
+                                    autocomplete="off"
+                                >
+                                <div class="captcha-display" id="captcha-display">
+                                    <span id="captcha-text"></span>
+                                    <button type="button" id="refresh-captcha" class="captcha-refresh" title="刷新验证码">
+                                        🔄
+                                    </button>
+                                </div>
+                            </div>
+                            <span class="form-error" id="captcha-error"></span>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" id="submit-btn" class="btn btn-primary">
+                                <span class="btn-text">提交申请</span>
+                                <span class="btn-loading" style="display: none;">提交中...</span>
+                            </button>
+                            <button type="reset" class="btn btn-secondary">重置</button>
+                        </div>
+                    </form>
+
+                    <div id="submit-result" class="submit-result"></div>
+                </div>
+            </div>
+
+            <!-- 查询状态标签页 -->
+            <div id="query-tab" class="tab-content">
+                <div class="query-status-container">
+                    <div class="query-form">
+                        <h3>查询申请状态</h3>
+                        <p class="query-hint">输入您的Minecraft游戏账号名称查询申请状态</p>
+                        <div class="input-group">
+                            <input 
+                                type="text" 
+                                id="query-username" 
+                                class="query-input" 
+                                placeholder="请输入游戏账号名称"
+                                maxlength="16"
+                            >
+                            <button id="query-btn" class="query-btn">查询</button>
+                        </div>
+                    </div>
+
+                    <div id="query-result" class="query-result"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script type="module">
+        import { init } from './js/main.js';
+        import { initPermissionPage } from './js/permission.js';
+        
+        // 初始化通用功能
+        init();
+        
+        // 初始化权限申请页面
+        document.addEventListener('DOMContentLoaded', function() {
+            initPermissionPage();
+        });
+    </script>
+    <button class="back-to-top" id="backToTop">↑</button>
+</body>
+</html>
+

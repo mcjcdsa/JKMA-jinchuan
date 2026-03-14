@@ -1,0 +1,56 @@
+{
+  "name": "jinchuan-control-center",
+  "version": "1.0.0",
+  "description": "金川服务器控制中心软件 - 游戏账号权限管理系统",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "build": "electron-builder",
+    "build:win": "electron-builder --win",
+    "build:mac": "electron-builder --mac",
+    "build:linux": "electron-builder --linux"
+  },
+  "keywords": [
+    "minecraft",
+    "permission",
+    "control-center",
+    "electron"
+  ],
+  "author": "JKMA都市圈|金川市",
+  "license": "MIT",
+  "dependencies": {
+    "mysql2": "^3.6.0",
+    "rcon": "^1.0.3"
+  },
+  "devDependencies": {
+    "electron": "^27.0.0",
+    "electron-builder": "^24.6.4"
+  },
+  "build": {
+    "appId": "com.jkma.jinchuan.controlcenter",
+    "productName": "金川服务器控制中心",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "**/*",
+      "!node_modules/**/*",
+      "node_modules/mysql2/**/*",
+      "node_modules/rcon/**/*"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.ico"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "assets/icon.icns"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "assets/icon.png"
+    }
+  }
+}
+

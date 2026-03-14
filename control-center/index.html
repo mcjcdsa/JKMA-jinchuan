@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>金川服务器控制中心</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <!-- 顶部标题栏 -->
+    <header class="header">
+        <div class="header-content">
+            <h1 class="app-title">金川服务器控制中心</h1>
+            <div class="header-status">
+                <div class="status-item">
+                    <span class="status-label">数据库:</span>
+                    <span id="db-status" class="status-badge disconnected">未连接</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">RCON:</span>
+                    <span id="rcon-status" class="status-badge disconnected">未连接</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主内容区域 -->
+    <div class="main-container">
+        <!-- 侧边栏导航 -->
+        <aside class="sidebar">
+            <nav class="nav-menu">
+                <button class="nav-item active" data-tab="config">
+                    <span class="nav-icon">⚙️</span>
+                    <span class="nav-text">连接配置</span>
+                </button>
+                <button class="nav-item" data-tab="requests">
+                    <span class="nav-icon">📋</span>
+                    <span class="nav-text">权限申请</span>
+                </button>
+                <button class="nav-item" data-tab="accounts">
+                    <span class="nav-icon">👥</span>
+                    <span class="nav-text">权限账号</span>
+                </button>
+                <button class="nav-item" data-tab="sql">
+                    <span class="nav-icon">💻</span>
+                    <span class="nav-text">SQL指令</span>
+                </button>
+                <button class="nav-item" data-tab="logs">
+                    <span class="nav-icon">📝</span>
+                    <span class="nav-text">操作日志</span>
+                </button>
+            </nav>
+        </aside>
+
+        <!-- 内容区域 -->
+        <main class="content">
+            <!-- 连接配置标签页 -->
+            <div id="config-tab" class="tab-content active">
+                <div class="tab-header">
+                    <h2>连接配置</h2>
+                </div>
+                <div class="config-container">
+                    <!-- 数据库配置 -->
+                    <div class="config-section">
+                        <h3>数据库连接配置</h3>
+                        <form id="db-config-form" class="config-form">
+                            <div class="form-group">
+                                <label for="db-host">数据库地址:</label>
+                                <input type="text" id="db-host" name="host" placeholder="localhost" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="db-port">端口:</label>
+                                <input type="number" id="db-port" name="port" value="3306" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="db-user">用户名:</label>
+                                <input type="text" id="db-user" name="user" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="db-password">密码:</label>
+                                <input type="password" id="db-password" name="password" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="db-database">数据库名:</label>
+                                <input type="text" id="db-database" name="database" value="permission_center" required>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">连接数据库</button>
+                                <button type="button" id="disconnect-db-btn" class="btn btn-secondary">断开连接</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- RCON配置 -->
+                    <div class="config-section">
+                        <h3>Minecraft服务器RCON配置</h3>
+                        <form id="rcon-config-form" class="config-form">
+                            <div class="form-group">
+                                <label for="rcon-host">服务器地址:</label>
+                                <input type="text" id="rcon-host" name="host" placeholder="localhost" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="rcon-port">RCON端口:</label>
+                                <input type="number" id="rcon-port" name="port" value="25575" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="rcon-password">RCON密码:</label>
+                                <input type="password" id="rcon-password" name="password" required>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">连接RCON</button>
+                                <button type="button" id="disconnect-rcon-btn" class="btn btn-secondary">断开连接</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 权限申请标签页 -->
+            <div id="requests-tab" class="tab-content">
+                <div class="tab-header">
+                    <h2>权限申请管理</h2>
+                    <div class="tab-actions">
+                        <button id="refresh-requests-btn" class="btn btn-secondary">刷新</button>
+                    </div>
+                </div>
+                <div class="filters">
+                    <div class="filter-group">
+                        <label>状态筛选:</label>
+                        <select id="request-status-filter">
+                            <option value="">全部</option>
+                            <option value="pending">待审核</option>
+                            <option value="approved">已通过</option>
+                            <option value="rejected">已拒绝</option>
+                            <option value="processed">已处理</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>搜索账号:</label>
+                        <input type="text" id="request-username-filter" placeholder="输入游戏账号名称">
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table id="requests-table" class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>游戏账号</th>
+                                <th>QQ号</th>
+                                <th>申请理由</th>
+                                <th>状态</th>
+                                <th>申请时间</th>
+                                <th>处理时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="requests-tbody">
+                            <tr>
+                                <td colspan="8" class="empty-message">请先连接数据库</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 权限账号标签页 -->
+            <div id="accounts-tab" class="tab-content">
+                <div class="tab-header">
+                    <h2>权限账号管理</h2>
+                    <div class="tab-actions">
+                        <button id="add-account-btn" class="btn btn-primary">添加账号</button>
+                        <button id="refresh-accounts-btn" class="btn btn-secondary">刷新</button>
+                    </div>
+                </div>
+                <div class="filters">
+                    <div class="filter-group">
+                        <label>权限等级:</label>
+                        <select id="account-level-filter">
+                            <option value="">全部</option>
+                            <option value="player">普通玩家</option>
+                            <option value="vip">VIP</option>
+                            <option value="admin">管理员</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>搜索账号:</label>
+                        <input type="text" id="account-username-filter" placeholder="输入游戏账号名称">
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table id="accounts-table" class="data-table">
+                        <thead>
+                            <tr>
+                                <th>游戏账号</th>
+                                <th>权限等级</th>
+                                <th>授权时间</th>
+                                <th>过期时间</th>
+                                <th>授权人</th>
+                                <th>备注</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="accounts-tbody">
+                            <tr>
+                                <td colspan="7" class="empty-message">请先连接数据库</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- SQL指令标签页 -->
+            <div id="sql-tab" class="tab-content">
+                <div class="tab-header">
+                    <h2>SQL指令执行</h2>
+                </div>
+                <div class="sql-container">
+                    <div class="sql-input-section">
+                        <label for="sql-input">SQL指令:</label>
+                        <textarea id="sql-input" class="sql-input" placeholder="输入SQL指令，例如：SELECT * FROM permission_requests WHERE status = 'pending';" rows="10"></textarea>
+                        <div class="sql-actions">
+                            <button id="execute-sql-btn" class="btn btn-primary">执行</button>
+                            <button id="clear-sql-btn" class="btn btn-secondary">清空</button>
+                        </div>
+                    </div>
+                    <div class="sql-result-section">
+                        <label>执行结果:</label>
+                        <div id="sql-result" class="sql-result"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 操作日志标签页 -->
+            <div id="logs-tab" class="tab-content">
+                <div class="tab-header">
+                    <h2>操作日志</h2>
+                    <div class="tab-actions">
+                        <button id="refresh-logs-btn" class="btn btn-secondary">刷新</button>
+                    </div>
+                </div>
+                <div class="filters">
+                    <div class="filter-group">
+                        <label>操作类型:</label>
+                        <select id="log-type-filter">
+                            <option value="">全部</option>
+                            <option value="apply">提交申请</option>
+                            <option value="approve">通过申请</option>
+                            <option value="reject">拒绝申请</option>
+                            <option value="add">添加权限</option>
+                            <option value="delete">删除权限</option>
+                            <option value="update">更新权限</option>
+                            <option value="sql">SQL指令</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>搜索账号:</label>
+                        <input type="text" id="log-username-filter" placeholder="输入游戏账号名称">
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table id="logs-table" class="data-table">
+                        <thead>
+                            <tr>
+                                <th>操作时间</th>
+                                <th>操作类型</th>
+                                <th>游戏账号</th>
+                                <th>操作人</th>
+                                <th>操作详情</th>
+                                <th>IP地址</th>
+                            </tr>
+                        </thead>
+                        <tbody id="logs-tbody">
+                            <tr>
+                                <td colspan="6" class="empty-message">请先连接数据库</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- 模态框 -->
+    <!-- 审核申请模态框 -->
+    <div id="review-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="review-modal-title">审核申请</h3>
+                <button class="modal-close" data-modal="review-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="review-request-info"></div>
+                <div id="reject-reason-section" style="display: none;">
+                    <label for="reject-reason-input">拒绝原因:</label>
+                    <textarea id="reject-reason-input" rows="3" placeholder="请输入拒绝原因"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="approve-btn" class="btn btn-success">通过</button>
+                <button id="reject-btn" class="btn btn-danger">拒绝</button>
+                <button class="btn btn-secondary modal-close" data-modal="review-modal">取消</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 添加账号模态框 -->
+    <div id="add-account-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>添加权限账号</h3>
+                <button class="modal-close" data-modal="add-account-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="add-account-form">
+                    <div class="form-group">
+                        <label for="add-username">游戏账号名称:</label>
+                        <input type="text" id="add-username" required maxlength="16" pattern="[a-zA-Z0-9_]{1,16}">
+                    </div>
+                    <div class="form-group">
+                        <label for="add-permission-level">权限等级:</label>
+                        <select id="add-permission-level" required>
+                            <option value="player">普通玩家</option>
+                            <option value="vip">VIP</option>
+                            <option value="admin">管理员</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="add-expires-at">过期时间（可选）:</label>
+                        <input type="datetime-local" id="add-expires-at">
+                    </div>
+                    <div class="form-group">
+                        <label for="add-notes">备注:</label>
+                        <textarea id="add-notes" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button id="save-account-btn" class="btn btn-primary">保存</button>
+                <button class="btn btn-secondary modal-close" data-modal="add-account-modal">取消</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 消息提示 -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="renderer.js"></script>
+</body>
+</html>
+
