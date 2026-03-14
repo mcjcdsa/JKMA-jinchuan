@@ -31,12 +31,29 @@ python -m http.server 8000
 
 ### 部署到GitHub Pages
 
+#### 方式一：一键部署脚本（推荐）
+
 ```powershell
-# 使用部署脚本
+# 使用新的部署脚本（自动检测仓库）
+.\deploy-github-pages.ps1
+
+# 或指定仓库地址
+.\deploy-github-pages.ps1 -GitHubRepo mcjcdsa/JKMA-jinchuan
+
+# Windows用户也可以双击运行
+.\deploy-github-pages.bat
+```
+
+#### 方式二：使用旧版脚本
+
+```powershell
+# 使用旧版部署脚本
 .\deploy-github.ps1 -GitHubRepo username/jkma-website
 ```
 
-详细说明请查看 [GitHub Pages部署说明](README-GitHub部署.md)
+详细说明请查看：
+- [GitHub Pages部署脚本使用说明](README-GitHub-Pages部署脚本.md)（新版脚本）
+- [GitHub Pages部署说明](README-GitHub部署.md)（完整部署指南）
 
 ### 部署到自建服务器
 
