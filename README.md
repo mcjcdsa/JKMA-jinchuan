@@ -4,7 +4,7 @@ JKMA都市圈|金川市官方网站源代码。
 
 ## 🌐 访问地址
 
-- **GitHub Pages**: https://[your-username].github.io/[repo-name]/
+- **GitHub Pages**: https://mcjcdsa.github.io/JKMA-jinchuan/
 - **自建服务器**: http://103.39.66.12:13626
 
 ## 📋 项目简介
@@ -140,7 +140,8 @@ python -m http.server 8000
 ## 📞 联系方式
 
 - QQ审核群: 467257156
-- 官方网站: http://103.39.66.12:13626
+- 官方网站: https://mcjcdsa.github.io/JKMA-jinchuan/
+- 自建服务器: http://103.39.66.12:13626
 
 ---
 
