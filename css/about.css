@@ -50,7 +50,7 @@
     margin-bottom: var(--spacing-xl);
     display: flex;
     align-items: center;
-    gap: var(--spacing-md);
+    min-height: 40px;
 }
 
 .timeline-date {
@@ -60,13 +60,14 @@
     min-width: 120px;
     text-align: right;
     flex-shrink: 0;
+    padding-right: var(--spacing-md);
 }
 
 .timeline-marker {
     position: absolute;
-    left: 138px;
+    left: 141px;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translate(-50%, -50%);
     width: 20px;
     height: 20px;
     background-color: var(--color-primary);
@@ -79,7 +80,7 @@
 }
 
 .timeline-item:hover .timeline-marker {
-    transform: translateY(-50%) scale(1.2);
+    transform: translate(-50%, -50%) scale(1.2);
     background-color: var(--color-primary-light);
     box-shadow: 0 0 0 5px var(--color-primary-light-bg);
 }
