@@ -37,7 +37,7 @@
 .timeline::before {
     content: '';
     position: absolute;
-    left: 170px;
+    left: 150px;
     top: 0;
     bottom: 0;
     width: 3px;
@@ -48,7 +48,6 @@
 .timeline-item {
     position: relative;
     margin-bottom: var(--spacing-xl);
-    padding-left: var(--spacing-xl);
     display: flex;
     align-items: center;
     gap: var(--spacing-md);
@@ -64,7 +63,10 @@
 }
 
 .timeline-marker {
-    position: relative;
+    position: absolute;
+    left: 138px;
+    top: 50%;
+    transform: translateY(-50%);
     width: 20px;
     height: 20px;
     background-color: var(--color-primary);
@@ -77,7 +79,7 @@
 }
 
 .timeline-item:hover .timeline-marker {
-    transform: scale(1.2);
+    transform: translateY(-50%) scale(1.2);
     background-color: var(--color-primary-light);
     box-shadow: 0 0 0 5px var(--color-primary-light-bg);
 }
@@ -89,6 +91,7 @@
     border-left: 4px solid var(--color-primary);
     transition: all var(--transition-normal);
     flex: 1;
+    margin-left: var(--spacing-xl);
 }
 
 .timeline-item:hover .timeline-content {
@@ -332,10 +335,10 @@
     }
     
     .timeline-item {
-        padding-left: var(--spacing-lg);
         flex-direction: column;
         align-items: flex-start;
         gap: var(--spacing-sm);
+        padding-left: var(--spacing-lg);
     }
     
     .timeline-date {
@@ -349,12 +352,14 @@
         position: absolute;
         left: -27px;
         top: 5px;
+        transform: none;
         width: 16px;
         height: 16px;
     }
     
     .timeline-content {
         width: 100%;
+        margin-left: 0;
     }
     
     .development-plan,
