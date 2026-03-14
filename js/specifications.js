@@ -6,7 +6,7 @@
 /**
  * 建设规范数据
  */
-const specificationsData = {
+export const specificationsData = {
     title: '金川轨道交通建设规范',
     sections: [
         {

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="JKMA都市圈|金川市建设相关文件，包含城市守则、建设规范等所有建设相关文档。">
+    <meta name="keywords" content="JKMA,都市圈,金川市,建设文件,城市守则,建设规范,文档">
+    <meta name="author" content="JKMA都市圈|金川市">
+    
+    <!-- Open Graph标签 -->
+    <meta property="og:title" content="建设相关文件 - JKMA都市圈|金川市官方网站">
+    <meta property="og:description" content="JKMA都市圈|金川市建设相关文件，包含城市守则、建设规范等所有建设相关文档。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://103.39.66.12:13626/documents.html">
+    <meta property="og:image" content="http://103.39.66.12:13626/64018EEC5FC9515CE725726DC59EB387.jpeg">
+    <meta property="og:site_name" content="JKMA都市圈|金川市官方网站">
+    
+    <!-- Twitter Card标签 -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="建设相关文件 - JKMA都市圈|金川市官方网站">
+    <meta name="twitter:description" content="JKMA都市圈|金川市建设相关文件，包含城市守则、建设规范等所有建设相关文档。">
+    
+    <!-- Canonical标签 -->
+    <link rel="canonical" href="http://103.39.66.12:13626/documents.html">
+    
+    <title>建设相关文件 - JKMA都市圈|金川市官方网站</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/documents.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-header">
+            <h2 class="nav-title">JKMA都市圈|金川市</h2>
+        </div>
+        <div class="nav-container">
+            <a href="index.html" class="nav-link">主页</a>
+            <a href="activity.html" class="nav-link">活动</a>
+            <a href="team.html" class="nav-link">团队成员</a>
+            <a href="query.html" class="nav-link">城市查询</a>
+            <a href="news.html" class="nav-link">新闻动态</a>
+            <a href="join.html" class="nav-link">加入我们</a>
+            <a href="partner.html" class="nav-link">合作伙伴</a>
+            <a href="about.html" class="nav-link">关于我们</a>
+            <a href="permission.html" class="nav-link">权限申请</a>
+            <a href="blacklist.html" class="nav-link">黑名单</a>
+            <a href="rules.html" class="nav-link">城市守则</a>
+            <a href="specifications.html" class="nav-link">建设规范</a>
+            <a href="documents.html" class="nav-link active">建设相关文件</a>
+        </div>
+    </nav>
+
+    <section class="section">
+        <div class="container">
+            <h1 class="section-title">金川市建设相关文件</h1>
+            
+            <div class="documents-intro">
+                <p>以下是JKMA都市圈|金川市所有建设相关的规则和条约文件。点击任意文件卡片可查看详细内容。</p>
+            </div>
+
+            <div class="documents-grid" id="documents-grid">
+                <!-- 文件列表将通过JavaScript动态加载 -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 文件详情模态框 -->
+    <div class="document-modal" id="document-modal">
+        <div class="modal-overlay" id="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modal-title"></h2>
+                <button class="modal-close" id="modal-close" aria-label="关闭">×</button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- 文件详细内容将在这里显示 -->
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { init } from './js/main.js';
+        import { initDocuments } from './js/documents.js';
+        
+        // 初始化通用功能
+        init();
+        
+        // 初始化建设相关文件页面
+        document.addEventListener('DOMContentLoaded', function() {
+            initDocuments();
+        });
+    </script>
+    <button class="back-to-top" id="backToTop">↑</button>
+</body>
+</html>
+
