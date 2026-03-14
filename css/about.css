@@ -65,7 +65,7 @@
 
 .timeline-marker {
     position: absolute;
-    left: 141px;
+    left: 151.5px;
     top: 50%;
     transform: translate(-50%, -50%);
     width: 20px;
@@ -92,7 +92,7 @@
     border-left: 4px solid var(--color-primary);
     transition: all var(--transition-normal);
     flex: 1;
-    margin-left: var(--spacing-xl);
+    margin-left: 30px;
 }
 
 .timeline-item:hover .timeline-content {
