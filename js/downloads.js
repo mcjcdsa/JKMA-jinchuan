@@ -13,11 +13,13 @@ export const downloadsData = [
         description: '包含服务器所需的所有Mod文件，解压后放入客户端的mods文件夹即可使用。',
         type: 'ZIP压缩包',
         size: '约297MB',
-        downloadUrl: '', // 外部下载链接，如果为空则显示QQ群提示
+        downloadUrl: 'mods.zip', // 本地文件路径，如果文件在服务器上可用
+        // 如果本地文件不可用，可以设置外部下载链接，例如：
+        // downloadUrl: 'https://your-cloud-storage.com/mods.zip',
         alternative: {
             type: 'qq',
             qq: '467257156',
-            message: '文件较大，请联系管理员获取下载链接或通过QQ群获取。'
+            message: '如果下载失败，请联系管理员获取下载链接或通过QQ群获取。'
         }
     }
     // 可以在这里添加更多下载项
@@ -34,13 +36,18 @@ function createDownloadCard(item) {
     
     if (item.downloadUrl) {
         // 有下载链接，显示下载按钮
+        const isExternal = item.downloadUrl.startsWith('http://') || item.downloadUrl.startsWith('https://');
+        const linkTarget = isExternal ? '_blank' : '_self';
+        const linkRel = isExternal ? 'noopener noreferrer' : '';
+        
         downloadActionHTML = `
             <div class="download-action">
-                <a href="${item.downloadUrl}" target="_blank" rel="noopener noreferrer" class="download-btn">
+                <a href="${item.downloadUrl}" ${linkTarget ? `target="${linkTarget}"` : ''} ${linkRel ? `rel="${linkRel}"` : ''} download="${item.name}.zip" class="download-btn">
                     <span class="download-icon">⬇️</span>
                     <span>下载</span>
                 </a>
                 ${item.size ? `<p class="download-size">文件大小：${item.size}</p>` : ''}
+                ${item.alternative ? `<p class="download-note">${item.alternative.message}</p>` : ''}
             </div>
         `;
     } else if (item.alternative) {
