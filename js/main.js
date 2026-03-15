@@ -12,8 +12,6 @@ import { initBreadcrumb } from './breadcrumb.js';
 import { initLoadingEffects } from './loading.js';
 import { initAccessibility } from './accessibility.js';
 import { initErrorHandling } from './error-handler.js';
-import { initFireworksEasterEgg } from './fireworks.js';
-import { initManualTrigger } from './manual-trigger.js';
 
 /**
  * 初始化所有通用功能
@@ -52,11 +50,6 @@ function initAll() {
         sessionStorage.setItem('pageLoaded', 'true');
     }
     
-    // 初始化烟花彩蛋（8月23日触发）
-    initFireworksEasterEgg();
-    
-    // 初始化手动触发按钮
-    initManualTrigger();
 }
 
 // 自动初始化
