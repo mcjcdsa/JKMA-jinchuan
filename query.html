@@ -111,6 +111,13 @@
         </div>
     </section>
 
+    <!-- 图片放大查看模态框 -->
+    <div id="district-image-modal" class="district-image-modal">
+        <span class="modal-close" id="district-modal-close">&times;</span>
+        <img class="modal-image" id="district-modal-image" src="" alt="放大查看">
+        <div class="modal-caption" id="district-modal-caption"></div>
+    </div>
+
     <script type="module">
         import { init } from './js/main.js';
         import { initQueryPage, switchTab, queryCoordinate, queryBuilding, searchBuildings, selectBuilding } from './js/query.js';
@@ -164,7 +171,46 @@
                     }
                 });
             }
+            
+            // 初始化图片放大查看功能
+            initDistrictImageModal();
         });
+        
+        // 初始化行政区域规划图放大查看功能
+        function initDistrictImageModal() {
+            const modal = document.getElementById('district-image-modal');
+            const modalImage = document.getElementById('district-modal-image');
+            const modalCaption = document.getElementById('district-modal-caption');
+            const closeBtn = document.getElementById('district-modal-close');
+            
+            // 全局函数，供onclick调用
+            window.showPlanningImage = function(imageSrc, caption) {
+                modalImage.src = imageSrc;
+                modalCaption.textContent = caption || '规划图';
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            };
+            
+            // 关闭模态框
+            function closeModal() {
+                modal.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+            
+            closeBtn.addEventListener('click', closeModal);
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+            
+            // ESC键关闭
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.style.display === 'flex') {
+                    closeModal();
+                }
+            });
+        }
     </script>
     <button class="back-to-top" id="backToTop">↑</button>
 </body>

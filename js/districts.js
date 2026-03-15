@@ -17,7 +17,8 @@ export const districtsData = [
             '若干个商业广场',
             'CBD核心区'
         ],
-        mapImage: 'districts/main-city-map.png' // 地图图片路径，需要用户提供
+        mapImage: 'xzqy/主城区.jpg', // 行政区域规划图
+        planningImage: 'xzqy/主城区.jpg' // 规划图（可点击放大）
     },
     {
         id: 'west-mountain',
@@ -28,7 +29,8 @@ export const districtsData = [
             '西山',
             '川马古道'
         ],
-        mapImage: 'districts/west-mountain-map.png'
+        mapImage: 'xzqy/西山区.jpg',
+        planningImage: 'xzqy/西山区.jpg'
     },
     {
         id: 'resort',
@@ -39,7 +41,8 @@ export const districtsData = [
             '金川国际会展中心',
             '斗南湿地公园'
         ],
-        mapImage: 'districts/resort-map.png'
+        mapImage: 'xzqy/度假区.jpg',
+        planningImage: 'xzqy/度假区.jpg'
     },
     {
         id: 'airport',
@@ -49,7 +52,8 @@ export const districtsData = [
         features: [
             '金川国际机场'
         ],
-        mapImage: 'districts/airport-map.png'
+        mapImage: 'xzqy/空港经济区.jpg',
+        planningImage: 'xzqy/空港经济区.jpg'
     },
     {
         id: 'high-tech',
@@ -71,7 +75,8 @@ export const districtsData = [
             '工业园区',
             '制造业基地'
         ],
-        mapImage: 'districts/industrial-map.png'
+        mapImage: 'xzqy/工业园.jpg',
+        planningImage: 'xzqy/工业园.jpg'
     },
     {
         id: 'jinbei',
@@ -94,7 +99,8 @@ export const districtsData = [
             '花卉市场',
             '生活配套设施'
         ],
-        mapImage: 'districts/guanchuan-map.png'
+        mapImage: 'xzqy/官川区.jpg',
+        planningImage: 'xzqy/官川区.jpg'
     }
 ];
 
@@ -125,6 +131,17 @@ function createDistrictCard(district) {
                      onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'300\'%3E%3Crect width=\'400\' height=\'300\' fill=\'%23f0f0f0\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' fill=\'%23999\' font-size=\'16\'%3E地图待添加%3C/text%3E%3C/svg%3E';">
             </div>
         </div>
+        ${district.planningImage ? `
+        <div class="district-planning">
+            <h4>区域规划图：</h4>
+            <div class="planning-container">
+                <img src="${district.planningImage}" alt="${district.name}规划图" class="district-planning-image clickable-planning-image" 
+                     onclick="window.showPlanningImage('${district.planningImage}', '${district.name}规划图')"
+                     onerror="this.style.display='none';">
+                <p class="planning-hint">点击图片可放大查看</p>
+            </div>
+        </div>
+        ` : ''}
     `;
     return card;
 }
