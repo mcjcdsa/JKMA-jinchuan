@@ -11,6 +11,10 @@ export const planningData = {
         title: '城市未来规划图',
         mapImage: 'planning/city-planning-map.png' // 规划图路径，需要用户提供
     },
+    districtPlanning: {
+        title: '行政区域规划',
+        mapImage: 'D47DE280E061FB91F3DD9FE0EED0FA3A.jpg' // 行政区域规划图
+    },
     transportation: {
         overview: {
             title: '交通总体规划',
@@ -38,16 +42,20 @@ export const planningData = {
 /**
  * 创建规划图容器
  */
-function createPlanningMap(imagePath, title) {
+function createPlanningMap(imagePath, title, isClickable = true) {
     const container = document.createElement('div');
     container.className = 'planning-map-wrapper';
     
+    const clickableClass = isClickable ? 'clickable-map' : '';
+    const clickHint = isClickable ? '<p class="map-click-hint">点击图片可放大查看</p>' : '';
+    
     container.innerHTML = `
-        <div class="planning-map-image-container">
+        <div class="planning-map-image-container ${clickableClass}">
             <img src="${imagePath}" alt="${title}" class="planning-map-image" 
                  onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'800\' height=\'600\'%3E%3Crect width=\'800\' height=\'600\' fill=\'%23f0f0f0\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' text-anchor=\'middle\' fill=\'%23999\' font-size=\'20\'%3E规划图待添加%3C/text%3E%3C/svg%3E';">
         </div>
-        <p class="planning-map-note">${title} - 规划图待添加</p>
+        ${clickHint}
+        <p class="planning-map-note">${title}</p>
     `;
     
     return container;
@@ -62,9 +70,21 @@ export function initPlanning() {
     if (cityPlanningContainer) {
         const cityMap = createPlanningMap(
             planningData.cityPlanning.mapImage,
-            planningData.cityPlanning.title
+            planningData.cityPlanning.title,
+            false
         );
         cityPlanningContainer.appendChild(cityMap);
+    }
+    
+    // 初始化行政区域规划图
+    const districtPlanningContainer = document.getElementById('district-planning-map');
+    if (districtPlanningContainer) {
+        const districtMap = createPlanningMap(
+            planningData.districtPlanning.mapImage,
+            planningData.districtPlanning.title,
+            true // 可点击放大
+        );
+        districtPlanningContainer.appendChild(districtMap);
     }
     
     // 初始化交通规划图
