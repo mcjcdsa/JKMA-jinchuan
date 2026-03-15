@@ -130,6 +130,29 @@
     margin-top: var(--spacing-xs);
 }
 
+.download-size {
+    font-size: var(--font-size-small);
+    color: var(--color-text-muted);
+    margin-top: var(--spacing-xs);
+    text-align: center;
+}
+
+.download-size-badge {
+    font-size: var(--font-size-small);
+    color: var(--color-text-muted);
+    background-color: var(--color-bg-white);
+    padding: 4px 12px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
+    margin-left: var(--spacing-sm);
+}
+
+.empty-state {
+    text-align: center;
+    padding: var(--spacing-xl);
+    color: var(--color-text-muted);
+}
+
 /* ========== 响应式设计 ========== */
 @media (max-width: 768px) {
     .download-section {

@@ -61,19 +61,8 @@
                 <!-- Mod下载 -->
                 <div class="download-section">
                     <h3 class="download-section-title">Mod下载</h3>
-                    <div class="download-item">
-                        <div class="download-info">
-                            <h4 class="download-name">服务器Mod包</h4>
-                            <p class="download-description">包含服务器所需的所有Mod文件，解压后放入客户端的mods文件夹即可使用。</p>
-                            <div class="download-meta">
-                                <span class="download-type">ZIP压缩包</span>
-                            </div>
-                        </div>
-                        <div class="download-action">
-                            <p class="download-note">文件较大（约297MB），请联系管理员获取下载链接或通过QQ群获取。</p>
-                            <p class="download-note">QQ审核群：<span id="qq-number" class="qq-number">467257156</span></p>
-                            <p class="copy-hint" id="copy-hint" style="display: none;"></p>
-                        </div>
+                    <div id="downloads-container">
+                        <!-- 下载项将通过JavaScript动态加载 -->
                     </div>
                 </div>
             </div>
@@ -82,14 +71,14 @@
 
     <script type="module">
         import { init } from './js/main.js';
-        import { initQQCopy } from './js/copy.js';
+        import { initDownloads } from './js/downloads.js';
         
         // 初始化通用功能
         init();
         
-        // 初始化QQ群号复制功能
+        // 初始化下载页面
         document.addEventListener('DOMContentLoaded', function() {
-            initQQCopy('467257156', 'qq-number', 'copy-hint');
+            initDownloads();
         });
     </script>
     <button class="back-to-top" id="backToTop">↑</button>
