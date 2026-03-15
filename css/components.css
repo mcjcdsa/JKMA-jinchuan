@@ -161,6 +161,84 @@
     border-radius: var(--radius-sm);
 }
 
+/* ========== 倒计时解读说明 ========== */
+.countdown-legend-section {
+    background-color: var(--color-bg-white);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    margin-top: var(--spacing-lg);
+}
+
+.legend-title {
+    font-size: var(--font-size-xl);
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+    font-weight: bold;
+    text-align: center;
+}
+
+.legend-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    background-color: var(--color-bg-light);
+    border-radius: var(--radius-sm);
+    transition: transform var(--transition-normal);
+}
+
+.legend-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.legend-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    font-weight: bold;
+    font-size: var(--font-size-base);
+    min-width: 60px;
+    text-align: center;
+}
+
+.legend-text {
+    font-size: var(--font-size-base);
+    color: var(--color-text);
+}
+
+/* T- 正常进行倒计时 - 绿色 */
+.legend-t-minus .legend-badge {
+    background-color: #10b981;
+    color: white;
+}
+
+/* NET 不早于 - 黄色 */
+.legend-net .legend-badge {
+    background-color: #f59e0b;
+    color: white;
+}
+
+/* TBD 待定 - 黑色 */
+.legend-tbd .legend-badge {
+    background-color: #1f2937;
+    color: white;
+}
+
+/* scrub 推迟 - 红色 */
+.legend-scrub .legend-badge {
+    background-color: #ef4444;
+    color: white;
+}
+
 /* ========== 活动内容 ========== */
 .activity-content {
     text-align: center;
@@ -833,6 +911,25 @@
     .timer-display,
     .countdown-display {
         font-size: 1.3em;
+    }
+
+    .countdown-legend-section {
+        padding: var(--spacing-md);
+    }
+
+    .legend-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+
+    .legend-item {
+        padding: var(--spacing-sm);
+    }
+
+    .legend-badge {
+        min-width: 50px;
+        font-size: var(--font-size-small);
+        padding: 4px 8px;
     }
 
     .team-members {
