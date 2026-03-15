@@ -29,3 +29,6 @@
 
 /* 导入招标页面样式 */
 @import url('css/tender.css');
+
+/* 导入下载页面样式 */
+@import url('css/downloads.css');

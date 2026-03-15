@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="JKMA都市圈|金川市服务器相关文件下载，包括Mod、配置文件等。">
+    <meta name="keywords" content="JKMA,都市圈,金川市,下载,Mod,服务器文件">
+    <meta name="author" content="JKMA都市圈|金川市">
+    
+    <!-- Open Graph标签 -->
+    <meta property="og:title" content="服务器相关文件下载 - JKMA都市圈|金川市官方网站">
+    <meta property="og:description" content="JKMA都市圈|金川市服务器相关文件下载，包括Mod、配置文件等。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mcjcdsa.github.io/JKMA-jinchuan/downloads.html">
+    <meta property="og:image" content="https://mcjcdsa.github.io/JKMA-jinchuan/64018EEC5FC9515CE725726DC59EB387.jpeg">
+    <meta property="og:site_name" content="JKMA都市圈|金川市官方网站">
+    
+    <!-- Twitter Card标签 -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="服务器相关文件下载 - JKMA都市圈|金川市官方网站">
+    <meta name="twitter:description" content="JKMA都市圈|金川市服务器相关文件下载，包括Mod、配置文件等。">
+    
+    <!-- Canonical标签 -->
+    <link rel="canonical" href="https://mcjcdsa.github.io/JKMA-jinchuan/downloads.html">
+    
+    <title>服务器相关文件下载 - JKMA都市圈|金川市官方网站</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/downloads.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-header">
+            <h2 class="nav-title">JKMA都市圈|金川市</h2>
+        </div>
+        <div class="nav-container">
+            <a href="index.html" class="nav-link">主页</a>
+            <a href="activity.html" class="nav-link">活动</a>
+            <a href="team.html" class="nav-link">团队成员</a>
+            <a href="query.html" class="nav-link">城市查询</a>
+            <a href="news.html" class="nav-link">新闻动态</a>
+            <a href="join.html" class="nav-link">加入我们</a>
+            <a href="partner.html" class="nav-link">合作伙伴</a>
+            <a href="about.html" class="nav-link">关于我们</a>
+            <a href="permission.html" class="nav-link">权限申请</a>
+            <a href="blacklist.html" class="nav-link">黑名单</a>
+            <a href="rules.html" class="nav-link">城市守则</a>
+            <a href="specifications.html" class="nav-link">建设规范</a>
+            <a href="documents.html" class="nav-link">建设相关文件</a>
+            <a href="sponsor.html" class="nav-link">服务器赞助</a>
+            <a href="guide.html" class="nav-link">新人入服指南</a>
+            <a href="tender.html" class="nav-link">城市建设招标与公示</a>
+            <a href="downloads.html" class="nav-link active">服务器相关文件下载</a>
+        </div>
+    </nav>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">服务器相关文件下载</h2>
+            
+            <div class="downloads-content">
+                <!-- Mod下载 -->
+                <div class="download-section">
+                    <h3 class="download-section-title">Mod下载</h3>
+                    <div class="download-item">
+                        <div class="download-info">
+                            <h4 class="download-name">服务器Mod包</h4>
+                            <p class="download-description">包含服务器所需的所有Mod文件，解压后放入客户端的mods文件夹即可使用。</p>
+                            <div class="download-meta">
+                                <span class="download-type">ZIP压缩包</span>
+                            </div>
+                        </div>
+                        <div class="download-action">
+                            <p class="download-note">文件较大（约297MB），请联系管理员获取下载链接或通过QQ群获取。</p>
+                            <p class="download-note">QQ审核群：<span id="qq-number" class="qq-number">467257156</span></p>
+                            <p class="copy-hint" id="copy-hint" style="display: none;"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script type="module">
+        import { init } from './js/main.js';
+        import { initQQCopy } from './js/copy.js';
+        
+        // 初始化通用功能
+        init();
+        
+        // 初始化QQ群号复制功能
+        document.addEventListener('DOMContentLoaded', function() {
+            initQQCopy('467257156', 'qq-number', 'copy-hint');
+        });
+    </script>
+    <button class="back-to-top" id="backToTop">↑</button>
+</body>
+</html>
+

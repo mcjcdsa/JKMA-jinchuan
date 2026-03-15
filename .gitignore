@@ -29,3 +29,7 @@ chufa
 Thumbs.db
 desktop.ini
 
+# 大文件
+mods.zip
+mods/
+
