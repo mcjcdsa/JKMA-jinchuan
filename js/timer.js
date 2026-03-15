@@ -98,7 +98,7 @@ export function initCountdown(elementId, targetDate, expiredMessage = '活动已
             const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-            countdownElement.textContent = `剩余：${days}天${hours}时${minutes}分${seconds}秒`;
+            countdownElement.textContent = `T-：${days}天${hours}时${minutes}分${seconds}秒`;
         }
 
         updateCountdown();
