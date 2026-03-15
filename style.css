@@ -32,3 +32,6 @@
 
 /* 导入下载页面样式 */
 @import url('css/downloads.css');
+
+/* 导入城市规划页面样式 */
+@import url('css/planning.css');
