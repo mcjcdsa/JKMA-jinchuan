@@ -20,3 +20,12 @@
 
 /* 导入关于我们页面样式 */
 @import url('css/about.css');
+
+/* 导入行政区域查询样式 */
+@import url('css/districts.css');
+
+/* 导入加入我们页面样式 */
+@import url('css/join.css');
+
+/* 导入招标页面样式 */
+@import url('css/tender.css');

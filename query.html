@@ -47,6 +47,7 @@
             <a href="documents.html" class="nav-link">建设相关文件</a>
             <a href="sponsor.html" class="nav-link">服务器赞助</a>
             <a href="guide.html" class="nav-link">新人入服指南</a>
+            <a href="tender.html" class="nav-link">城市建设招标与公示</a>
         </div>
     </nav>
 
@@ -58,6 +59,7 @@
                 <button class="tab-btn active" data-tab="coordinate">坐标查询</button>
                 <button class="tab-btn" data-tab="building">建筑查询</button>
                 <button class="tab-btn" data-tab="teleport">传送点查询</button>
+                <button class="tab-btn" data-tab="districts">行政区域查询</button>
             </div>
 
             <div id="coordinate-tab" class="tab-content active">
@@ -92,12 +94,25 @@
                     <div id="teleport-result" class="teleport-list"></div>
                 </div>
             </div>
+
+            <div id="districts-tab" class="tab-content">
+                <div class="query-form">
+                    <h3>金川市行政区域查询</h3>
+                    <p class="query-hint">查询金川市各行政区域信息</p>
+                    <div class="input-group">
+                        <input type="text" id="districts-input" placeholder="输入区域名称搜索" class="query-input">
+                        <button id="districts-query-btn" class="query-btn">搜索</button>
+                    </div>
+                    <div id="districts-container" class="districts-container"></div>
+                </div>
+            </div>
         </div>
     </section>
 
     <script type="module">
         import { init } from './js/main.js';
         import { initQueryPage, switchTab, queryCoordinate, queryBuilding, searchBuildings, selectBuilding } from './js/query.js';
+        import { initDistricts, searchDistricts } from './js/districts.js';
         
         // 初始化通用功能
         init();
@@ -111,18 +126,40 @@
                 btn.addEventListener('click', function() {
                     const tabName = this.getAttribute('data-tab');
                     switchTab(tabName, this);
+                    if (tabName === 'districts') {
+                        initDistricts();
+                    }
                 });
             });
             
             // 绑定查询按钮
             document.getElementById('coordinate-query-btn').addEventListener('click', queryCoordinate);
             document.getElementById('building-query-btn').addEventListener('click', queryBuilding);
+            document.getElementById('districts-query-btn').addEventListener('click', function() {
+                const input = document.getElementById('districts-input').value.trim();
+                searchDistricts(input);
+            });
             
             // 绑定建筑搜索
             const buildingInput = document.getElementById('building-input');
             if (buildingInput) {
                 buildingInput.addEventListener('input', function(e) {
                     searchBuildings(e.target.value);
+                });
+            }
+
+            // 绑定行政区域搜索
+            const districtsInput = document.getElementById('districts-input');
+            if (districtsInput) {
+                districtsInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        searchDistricts(e.target.value.trim());
+                    }
+                });
+                districtsInput.addEventListener('input', function(e) {
+                    if (e.target.value.trim() === '') {
+                        initDistricts();
+                    }
                 });
             }
         });

@@ -3,29 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="JKMA都市圈|金川市轨道交通建设规范，了解地铁、车辆段、区间、车站、线路等建设标准。">
-    <meta name="keywords" content="JKMA,都市圈,金川市,建设规范,轨道交通,地铁,技术规范">
+    <meta name="description" content="金川市城市建设招标与公示，查看最新的招标项目和公示信息。">
+    <meta name="keywords" content="JKMA,都市圈,金川市,招标,公示,城市建设">
     <meta name="author" content="JKMA都市圈|金川市">
     
     <!-- Open Graph标签 -->
-    <meta property="og:title" content="建设规范 - JKMA都市圈|金川市官方网站">
-    <meta property="og:description" content="JKMA都市圈|金川市轨道交通建设规范，了解地铁、车辆段、区间、车站、线路等建设标准。">
+    <meta property="og:title" content="城市建设招标与公示 - JKMA都市圈|金川市官方网站">
+    <meta property="og:description" content="金川市城市建设招标与公示，查看最新的招标项目和公示信息。">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="http://103.39.66.12:13626/specifications.html">
-    <meta property="og:image" content="http://103.39.66.12:13626/64018EEC5FC9515CE725726DC59EB387.jpeg">
+    <meta property="og:url" content="https://mcjcdsa.github.io/JKMA-jinchuan/tender.html">
+    <meta property="og:image" content="https://mcjcdsa.github.io/JKMA-jinchuan/64018EEC5FC9515CE725726DC59EB387.jpeg">
     <meta property="og:site_name" content="JKMA都市圈|金川市官方网站">
     
     <!-- Twitter Card标签 -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="建设规范 - JKMA都市圈|金川市官方网站">
-    <meta name="twitter:description" content="JKMA都市圈|金川市轨道交通建设规范，了解地铁、车辆段、区间、车站、线路等建设标准。">
+    <meta name="twitter:title" content="城市建设招标与公示 - JKMA都市圈|金川市官方网站">
+    <meta name="twitter:description" content="金川市城市建设招标与公示，查看最新的招标项目和公示信息。">
     
     <!-- Canonical标签 -->
-    <link rel="canonical" href="http://103.39.66.12:13626/specifications.html">
+    <link rel="canonical" href="https://mcjcdsa.github.io/JKMA-jinchuan/tender.html">
     
-    <title>建设规范 - JKMA都市圈|金川市官方网站</title>
+    <title>城市建设招标与公示 - JKMA都市圈|金川市官方网站</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="css/specifications.css">
 </head>
 <body>
     <nav class="navbar">
@@ -44,39 +43,33 @@
             <a href="permission.html" class="nav-link">权限申请</a>
             <a href="blacklist.html" class="nav-link">黑名单</a>
             <a href="rules.html" class="nav-link">城市守则</a>
-            <a href="specifications.html" class="nav-link active">建设规范</a>
+            <a href="specifications.html" class="nav-link">建设规范</a>
             <a href="documents.html" class="nav-link">建设相关文件</a>
             <a href="sponsor.html" class="nav-link">服务器赞助</a>
             <a href="guide.html" class="nav-link">新人入服指南</a>
-            <a href="tender.html" class="nav-link">城市建设招标与公示</a>
+            <a href="tender.html" class="nav-link active">城市建设招标与公示</a>
         </div>
     </nav>
 
     <section class="section">
         <div class="container">
-            <h1 class="section-title">金川轨道交通建设规范</h1>
+            <h2 class="section-title">城市建设招标与公示</h2>
             
-            <div class="specifications-intro">
-                <p>本文档规定了金川市轨道交通（地铁）建设的各项技术标准和规范要求，所有建设活动必须严格遵守本规范。</p>
-            </div>
-
-            <div class="specifications-container" id="specifications-container">
-                <!-- 规范内容将通过JavaScript动态加载 -->
+            <div class="tender-content">
+                <div class="tender-empty-state">
+                    <div class="empty-icon">📋</div>
+                    <h3 class="empty-title">暂无需要招标的项目</h3>
+                    <p class="empty-description">当前没有正在进行的招标项目，请关注后续更新。</p>
+                </div>
             </div>
         </div>
     </section>
 
     <script type="module">
         import { init } from './js/main.js';
-        import { initSpecifications } from './js/specifications.js';
         
         // 初始化通用功能
         init();
-        
-        // 初始化建设规范页面
-        document.addEventListener('DOMContentLoaded', function() {
-            initSpecifications();
-        });
     </script>
     <button class="back-to-top" id="backToTop">↑</button>
 </body>

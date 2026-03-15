@@ -444,6 +444,73 @@
     line-height: 1.5;
 }
 
+/* ========== 服务器相关账号样式 ========== */
+.server-accounts-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+}
+
+.account-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-lg);
+    background-color: var(--color-bg-light);
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--color-primary);
+    transition: all var(--transition-normal);
+}
+
+.account-item:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-left-color: var(--color-secondary);
+}
+
+.account-icon {
+    font-size: 2.5em;
+    flex-shrink: 0;
+}
+
+.account-info {
+    flex: 1;
+}
+
+.account-name {
+    font-size: var(--font-size-large);
+    color: var(--color-text);
+    margin: 0 0 var(--spacing-xs) 0;
+    font-weight: 600;
+}
+
+.account-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    color: var(--color-primary);
+    text-decoration: none;
+    font-size: var(--font-size-base);
+    transition: color var(--transition-normal);
+}
+
+.account-link:hover {
+    color: var(--color-primary-light);
+    text-decoration: underline;
+}
+
+.account-value {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-base);
+    font-weight: 500;
+}
+
+.external-link-icon {
+    font-size: 0.9em;
+    opacity: 0.7;
+}
+
 /* ========== 响应式设计 ========== */
 @media (max-width: 768px) {
     .timeline {
@@ -491,6 +558,15 @@
     .modal-content {
         padding: var(--spacing-md);
         width: 95%;
+    }
+
+    .server-accounts-container {
+        grid-template-columns: 1fr;
+    }
+
+    .account-item {
+        flex-direction: column;
+        text-align: center;
     }
 }
 

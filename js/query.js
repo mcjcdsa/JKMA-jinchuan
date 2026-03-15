@@ -28,6 +28,10 @@ export function switchTab(tabName, targetElement = null) {
     if (tabName === 'teleport') {
         displayTeleports();
     }
+    
+    if (tabName === 'districts') {
+        // 行政区域查询在query.html中初始化
+    }
 }
 
 export function queryCoordinate() {

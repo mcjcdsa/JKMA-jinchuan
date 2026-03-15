@@ -1,0 +1,52 @@
+/**
+ * 招标页面样式
+ */
+
+/* ========== 招标内容区域 ========== */
+.tender-content {
+    margin-top: var(--spacing-xl);
+}
+
+.tender-empty-state {
+    text-align: center;
+    padding: var(--spacing-xxxl) var(--spacing-lg);
+    background-color: var(--color-bg-light);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+}
+
+.empty-icon {
+    font-size: 4em;
+    margin-bottom: var(--spacing-lg);
+    opacity: 0.6;
+}
+
+.empty-title {
+    font-size: var(--font-size-xl);
+    color: var(--color-text);
+    margin: 0 0 var(--spacing-md) 0;
+    font-weight: 600;
+}
+
+.empty-description {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* ========== 响应式设计 ========== */
+@media (max-width: 768px) {
+    .tender-empty-state {
+        padding: var(--spacing-xl) var(--spacing-md);
+    }
+
+    .empty-icon {
+        font-size: 3em;
+    }
+
+    .empty-title {
+        font-size: var(--font-size-large);
+    }
+}
+

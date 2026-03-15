@@ -47,6 +47,7 @@
             <a href="documents.html" class="nav-link">建设相关文件</a>
             <a href="sponsor.html" class="nav-link">服务器赞助</a>
             <a href="guide.html" class="nav-link">新人入服指南</a>
+            <a href="tender.html" class="nav-link">城市建设招标与公示</a>
         </div>
     </nav>
 
@@ -59,18 +60,65 @@
                 </p>
                 <p class="copy-hint" id="copy-hint"></p>
             </div>
+
+            <!-- 审核问卷 -->
+            <div class="join-section">
+                <h3 class="join-section-title">审核问卷</h3>
+                <div class="questionnaire-box">
+                    <p class="questionnaire-description">请填写以下审核问卷，完成审核流程：</p>
+                    <a href="https://wj.qq.com/s2/25981118/a2a6/" target="_blank" rel="noopener noreferrer" class="questionnaire-link">
+                        <span class="questionnaire-icon">📝</span>
+                        <span>点击填写审核问卷</span>
+                        <span class="external-link-icon">↗</span>
+                    </a>
+                </div>
+                
+                <div class="questionnaire-notice">
+                    <h4 class="notice-title">填写问卷须知：</h4>
+                    <ol class="notice-list">
+                        <li>有些题目下面的说明有格式要求，如果不按照格式要求填写的，一律作废处理</li>
+                        <li>上传作品请上传本人的，如果发现你是盗取别人的作品，永久取消进入JKMA的机会并且拉入黑名单</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- 审核进度 -->
+            <div class="join-section">
+                <h3 class="join-section-title">审核进度</h3>
+                <div class="review-progress-container">
+                    <table class="review-progress-table">
+                        <thead>
+                            <tr>
+                                <th>游戏昵称</th>
+                                <th>QQ号</th>
+                                <th>审核进度</th>
+                                <th>备注</th>
+                            </tr>
+                        </thead>
+                        <tbody id="review-progress-body">
+                            <!-- 审核进度数据将通过JavaScript动态加载 -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </section>
 
     <script type="module">
         import { init } from './js/main.js';
         import { initQQCopy } from './js/copy.js';
+        import { initReviewProgress } from './js/review-progress.js';
         
         // 初始化通用功能
         init();
         
         // 初始化QQ群号复制功能
         initQQCopy('467257156', 'qq-number', 'copy-hint');
+        
+        // 初始化审核进度表格
+        document.addEventListener('DOMContentLoaded', function() {
+            initReviewProgress();
+        });
     </script>
     <button class="back-to-top" id="backToTop">↑</button>
 </body>
