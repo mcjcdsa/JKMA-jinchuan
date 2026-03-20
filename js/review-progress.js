@@ -8,13 +8,12 @@
  * 注意：实际应用中，这些数据应该从后端API获取
  */
 export const reviewProgressData = [
-    // 示例数据，实际使用时需要从服务器获取
-    // {
-    //     gameName: '示例玩家',
-    //     qq: '123456789',
-    //     status: '通过', // '通过' 或 '不通过'
-    //     note: '审核通过'
-    // }
+    {
+        gameName: 'spacez',
+        qq: '706025513',
+        status: '通过',
+        note: '审核通过'
+    }
 ];
 
 /**
