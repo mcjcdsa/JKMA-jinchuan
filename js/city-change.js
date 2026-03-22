@@ -1,6 +1,15 @@
 /**
  * 关于我们 — 城市变迁（图文时间轴）
+ * 图片路径相对仓库根目录；用 import.meta.url 解析为绝对 URL，避免在子路径部署或部分环境下相对路径解析错误。
  */
+function assetUrl(filename) {
+    try {
+        return new URL(`../${filename}`, import.meta.url).href;
+    } catch {
+        return filename;
+    }
+}
+
 const cityChangeItems = [
     {
         image: 'C9B1CCE85CB1CC20EB8265588FDDB1DE.png',
@@ -52,7 +61,8 @@ export function initCityChange() {
                 </div>
                 <div class="city-change-body">
                     <div class="city-change-img-wrap">
-                        <img src="${escapeHtml(item.image)}" alt="" class="city-change-img" width="400" height="225" loading="lazy" decoding="async">
+                        <img src="${assetUrl(item.image)}" alt="${escapeHtml(item.content)}" class="city-change-img" width="400" height="225" loading="lazy" decoding="async">
+                        <p class="city-change-img-error" hidden>图片未能加载。请确认仓库已包含该 PNG 并已推送部署，或 Ctrl+F5 强刷缓存。</p>
                     </div>
                     <div class="city-change-copy">
                         <p class="city-change-text">${escapeHtml(item.content)}</p>
@@ -67,4 +77,15 @@ export function initCityChange() {
     `
         )
         .join('');
+
+    root.querySelectorAll('img.city-change-img').forEach((img) => {
+        img.addEventListener('error', () => {
+            img.classList.add('city-change-img--error');
+            const wrap = img.closest('.city-change-img-wrap');
+            if (!wrap) return;
+            wrap.classList.add('city-change-img-wrap--error');
+            const err = wrap.querySelector('.city-change-img-error');
+            if (err) err.hidden = false;
+        });
+    });
 }

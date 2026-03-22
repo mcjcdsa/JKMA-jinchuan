@@ -91,7 +91,15 @@
 .city-change-img-wrap {
     margin: 0;
     line-height: 0;
-    background: #0f172a;
+    /* 加载前浅底；原深色易在图片未解码时被误认为「整图全黑」 */
+    background: linear-gradient(145deg, #e2e8f0 0%, #cbd5e1 100%);
+    min-height: 120px;
+}
+
+.city-change-img-wrap--error {
+    background: #fef2f2;
+    padding: var(--spacing-md);
+    min-height: auto;
 }
 
 .city-change-img {
@@ -100,6 +108,17 @@
     max-height: 320px;
     object-fit: cover;
     display: block;
+}
+
+.city-change-img--error {
+    display: none;
+}
+
+.city-change-img-error {
+    margin: 0;
+    font-size: var(--font-size-small);
+    color: #b91c1c;
+    line-height: 1.5;
 }
 
 .city-change-copy {
