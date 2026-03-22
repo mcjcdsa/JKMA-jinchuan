@@ -99,7 +99,6 @@
 .city-change-img-wrap--error {
     background: #fef2f2;
     padding: var(--spacing-md);
-    min-height: auto;
 }
 
 .city-change-img {
