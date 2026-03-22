@@ -1,0 +1,174 @@
+/**
+ * 团队成员页增强（参考现代演出/团队站：大留白、栅格卡片、顶栏渐变）
+ * 仅作用于 .team-page-section 内，避免影响其他页面组件。
+ */
+
+.team-page-section {
+    background: linear-gradient(
+        180deg,
+        var(--color-primary-light-bg) 0%,
+        #ffffff 45%,
+        var(--color-bg-light) 100%
+    );
+    padding-top: var(--spacing-lg);
+    padding-bottom: var(--spacing-xl);
+}
+
+.team-page-hero {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto var(--spacing-xl);
+    padding: 0 var(--spacing-md);
+}
+
+.team-page-eyebrow {
+    margin: 0 0 var(--spacing-sm);
+    font-size: var(--font-size-small);
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    opacity: 0.9;
+}
+
+.team-page-title {
+    margin-bottom: var(--spacing-md);
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.team-page-subtitle {
+    margin: 0;
+    font-size: var(--font-size-base);
+    line-height: 1.75;
+    color: var(--color-text-secondary);
+}
+
+/* 栅格：参考团队站多列卡片 */
+.team-page-section .team-members {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+    gap: var(--spacing-xl);
+    justify-content: center;
+    align-items: stretch;
+    margin-top: 0;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.team-page-section .member-card {
+    max-width: none;
+    min-width: 0;
+    flex: initial;
+    padding: 0;
+    border-radius: 16px;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 4px 24px rgba(30, 58, 138, 0.08);
+    background: var(--color-bg-white);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.team-page-section .member-card::before {
+    content: '';
+    display: block;
+    height: 4px;
+    width: 100%;
+    background: linear-gradient(
+        90deg,
+        var(--color-primary) 0%,
+        var(--color-primary-light) 50%,
+        #6366f1 100%
+    );
+}
+
+.team-page-section .member-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 40px rgba(30, 58, 138, 0.14);
+    border-color: var(--color-primary-border);
+}
+
+.team-page-section .member-card-header {
+    padding: var(--spacing-lg) var(--spacing-lg) var(--spacing-md);
+    margin-bottom: 0;
+}
+
+.team-page-section .member-avatar {
+    width: 128px;
+    height: 128px;
+    border-width: 3px;
+}
+
+.team-page-section .member-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+    padding: var(--spacing-md) var(--spacing-lg);
+    margin: 0;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    background: linear-gradient(180deg, #fafbff 0%, #ffffff 100%);
+}
+
+.team-page-section .stat-item {
+    padding: var(--spacing-sm);
+    background: var(--color-bg-light);
+    border-radius: var(--radius-md);
+}
+
+.team-page-section .member-toggle-btn {
+    margin: 0;
+    border-radius: 0 0 14px 14px;
+    padding: 14px var(--spacing-lg);
+    background: linear-gradient(
+        135deg,
+        var(--color-primary) 0%,
+        var(--color-primary-dark) 100%
+    );
+}
+
+.team-page-section .member-toggle-btn:hover {
+    filter: brightness(1.05);
+    background: linear-gradient(
+        135deg,
+        var(--color-primary-light) 0%,
+        var(--color-primary) 100%
+    );
+}
+
+.team-page-section .member-details {
+    padding: 0 var(--spacing-lg) var(--spacing-lg);
+}
+
+.team-page-section .detail-section:first-of-type {
+    padding-top: var(--spacing-md);
+}
+
+@media (max-width: 768px) {
+    .team-page-section .team-members {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    .team-page-section .member-stats {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-sm);
+    }
+
+    .team-page-section .member-avatar {
+        width: 104px;
+        height: 104px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .team-page-section .member-card {
+        transition: none;
+    }
+
+    .team-page-section .member-card:hover {
+        transform: none;
+    }
+}

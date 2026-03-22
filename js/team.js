@@ -22,12 +22,14 @@ export function toggleMemberDetails(button) {
         toggleText.textContent = '查看详情';
         toggleIcon.textContent = '▼';
         toggleIcon.style.transform = 'rotate(0deg)';
+        button.setAttribute('aria-expanded', 'false');
     } else {
         memberCard.classList.add('expanded');
         details.style.maxHeight = details.scrollHeight + 'px';
         toggleText.textContent = '收起详情';
         toggleIcon.textContent = '▲';
         toggleIcon.style.transform = 'rotate(180deg)';
+        button.setAttribute('aria-expanded', 'true');
     }
 }
 
