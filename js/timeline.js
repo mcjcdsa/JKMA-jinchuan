@@ -139,6 +139,11 @@ const timelineEvents = [
         date: '2026-03-14',
         title: '金川市官网上线',
         description: '金川市官方网站正式上线，为市民和访客提供便捷的信息查询和服务。网站成为城市对外展示的重要窗口，标志着城市信息化建设的新起点。'
+    },
+    {
+        date: '2026-03-21',
+        title: '金川市新周目开服',
+        description: '金川市新周目正式开服，开启新一轮城市建设与探索。'
     }
 ];
 
@@ -194,7 +199,7 @@ function getPeriod(dateString) {
     // 时期分界点
     const earlyEnd = new Date('2023-01-01');      // 早期结束：2023年1月1日（不包含）
     const neteaseEnd = new Date('2024-10-01');    // 网易时期结束：2024年10月1日（不包含）
-    const javaEnd = new Date('2026-03-15');       // Java时期结束：2026年3月15日（用于包含3月14日）
+    const jkmaStart = new Date('2026-03-14');     // JKMA都市圈时期起点（含合并官网等当日事件）
     
     // 早期：2020年8月23日到2023年1月（不包含2023年1月）
     if (date < earlyEnd) {
@@ -206,9 +211,14 @@ function getPeriod(dateString) {
         return '网易时期';
     }
     
-    // Java时期：2024年10月到2026年3月14日（包含2026年3月14日）
-    if (date >= neteaseEnd && date < javaEnd) {
+    // Java时期：2024年10月到2026年3月14日（不含3月14日当天）
+    if (date >= neteaseEnd && date < jkmaStart) {
         return 'Java时期';
+    }
+    
+    // JKMA都市圈：2026年3月14日起（含合并、新周目开服等）
+    if (date >= jkmaStart) {
+        return 'JKMA都市圈';
     }
     
     return '';
