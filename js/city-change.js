@@ -1,10 +1,12 @@
 /**
  * 关于我们 — 城市变迁（图文时间轴）
- * 图片路径相对仓库根目录；用 import.meta.url 解析为绝对 URL，避免在子路径部署或部分环境下相对路径解析错误。
+ * 图片放在仓库根目录，与 about.html 同一路径层级，src 使用「相对当前页面」即可。
+ * 不用 import.meta.url：部分浏览器下与懒加载组合时易出现长时间占位。
+ * 不用 loading="lazy"：Edge 会对懒加载图片做占位与延迟（Intervention），易导致「一直灰块」观感。
  */
-function assetUrl(filename) {
+function imgSrc(filename) {
     try {
-        return new URL(`../${filename}`, import.meta.url).href;
+        return new URL(filename, window.location.href).href;
     } catch {
         return filename;
     }
@@ -50,7 +52,7 @@ export function initCityChange() {
 
     root.innerHTML = sorted
         .map(
-            (item) => `
+            (item, index) => `
         <div class="city-change-item">
             <div class="city-change-item-inner">
                 <div class="city-change-date-col">
@@ -61,7 +63,7 @@ export function initCityChange() {
                 </div>
                 <div class="city-change-body">
                     <div class="city-change-img-wrap">
-                        <img src="${assetUrl(item.image)}" alt="${escapeHtml(item.content)}" class="city-change-img" width="400" height="225" loading="lazy" decoding="async">
+                        <img src="${imgSrc(item.image)}" alt="${escapeHtml(item.content)}" class="city-change-img" width="400" height="225" loading="eager" decoding="async"${index === 0 ? ' fetchpriority="high"' : ''}>
                         <p class="city-change-img-error" hidden>图片未能加载。请确认仓库已包含该 PNG 并已推送部署，或 Ctrl+F5 强刷缓存。</p>
                     </div>
                     <div class="city-change-copy">
