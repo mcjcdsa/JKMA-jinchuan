@@ -296,16 +296,21 @@
         
         // 确保DOM加载完成后再初始化
         function initPage() {
-            // 初始化通用功能
-            init();
-            
-            // 初始化成立时间计时器
+            // 计时器优先：避免 init() 中某步抛错导致整段脚本中断，计时器永远停在「计算中...」
             initFoundationTimer('foundation-timer', '2020-08-23T00:00:00');
-            // 开服时间：开服前倒计时，开服后与成立时间同格式累计
             initServerLaunchTimer('server-launch-timer', '2026-03-21T18:58:00');
-            
-            // 添加结构化数据
-            addHomePageStructuredData();
+
+            try {
+                init();
+            } catch (err) {
+                console.error('首页通用初始化失败:', err);
+            }
+
+            try {
+                addHomePageStructuredData();
+            } catch (err) {
+                console.error('首页结构化数据失败:', err);
+            }
         }
         
         // DOM加载完成后执行
