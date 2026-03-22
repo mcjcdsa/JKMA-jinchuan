@@ -511,6 +511,88 @@
     opacity: 0.7;
 }
 
+/* ========== 官网编写人员 / 鸣谢 / 更新日志 ========== */
+.about-section--meta .credits-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.about-section--meta .credits-list li {
+    padding: var(--spacing-md) var(--spacing-lg);
+    margin-bottom: var(--spacing-sm);
+    background-color: var(--color-bg-light);
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--color-primary);
+    line-height: 1.7;
+    color: var(--color-text);
+}
+
+.about-section--meta .credits-list--thanks li {
+    border-left-color: var(--color-secondary);
+}
+
+.credits-name {
+    font-weight: 700;
+    color: var(--color-primary-dark);
+}
+
+.credits-sep {
+    margin: 0 2px;
+}
+
+.changelog-hint {
+    text-align: center;
+    font-size: var(--font-size-small);
+    color: var(--color-text-muted);
+    margin: calc(-1 * var(--spacing-sm)) 0 var(--spacing-lg);
+}
+
+.changelog-hint code {
+    font-size: 0.9em;
+    padding: 2px 6px;
+    background: var(--color-bg-light);
+    border-radius: var(--radius-sm);
+}
+
+.changelog-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.changelog-list li {
+    position: relative;
+    padding: var(--spacing-md) var(--spacing-md) var(--spacing-md) var(--spacing-lg);
+    margin-bottom: var(--spacing-sm);
+    background-color: var(--color-bg-light);
+    border-radius: var(--radius-md);
+    line-height: 1.75;
+    color: var(--color-text-secondary);
+    border: 1px solid var(--color-border-light);
+}
+
+.changelog-time {
+    display: inline-block;
+    margin-right: var(--spacing-sm);
+    font-family: ui-monospace, Consolas, monospace;
+    font-size: var(--font-size-small);
+    font-weight: 600;
+    color: var(--color-primary);
+    white-space: nowrap;
+}
+
+.changelog-list code {
+    font-size: 0.85em;
+    word-break: break-all;
+}
+
 /* ========== 响应式设计 ========== */
 @media (max-width: 768px) {
     .timeline {
