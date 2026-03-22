@@ -1,0 +1,158 @@
+/**
+ * 关于我们 — 城市变迁（图文时间轴）
+ */
+
+.city-change-intro {
+    text-align: center;
+    color: var(--color-text-secondary);
+    margin: calc(-1 * var(--spacing-md)) 0 var(--spacing-lg);
+    line-height: 1.7;
+}
+
+.city-change-timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: var(--spacing-md) 0 var(--spacing-lg);
+}
+
+.city-change-timeline::before {
+    content: '';
+    position: absolute;
+    left: 108px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(
+        to bottom,
+        var(--color-primary-light),
+        var(--color-primary)
+    );
+    border-radius: 2px;
+    z-index: 0;
+}
+
+.city-change-item {
+    position: relative;
+    z-index: 1;
+    margin-bottom: var(--spacing-xl);
+}
+
+.city-change-item:last-child {
+    margin-bottom: 0;
+}
+
+.city-change-item-inner {
+    display: grid;
+    grid-template-columns: 100px 24px 1fr;
+    gap: var(--spacing-md);
+    align-items: start;
+}
+
+.city-change-date-col {
+    text-align: right;
+    padding-top: 4px;
+}
+
+.city-change-date {
+    font-family: ui-monospace, Consolas, 'Microsoft YaHei', sans-serif;
+    font-size: var(--font-size-small);
+    font-weight: 700;
+    color: var(--color-primary);
+    white-space: nowrap;
+}
+
+.city-change-axis {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding-top: 6px;
+}
+
+.city-change-dot {
+    display: block;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    border: 3px solid var(--color-bg-white);
+    box-shadow: 0 0 0 2px var(--color-primary-light);
+    flex-shrink: 0;
+}
+
+.city-change-body {
+    background: var(--color-bg-light);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border-light);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+
+.city-change-img-wrap {
+    margin: 0;
+    line-height: 0;
+    background: #0f172a;
+}
+
+.city-change-img {
+    width: 100%;
+    height: auto;
+    max-height: 320px;
+    object-fit: cover;
+    display: block;
+}
+
+.city-change-copy {
+    padding: var(--spacing-md) var(--spacing-lg);
+}
+
+.city-change-text {
+    margin: 0 0 var(--spacing-sm);
+    font-size: var(--font-size-large);
+    font-weight: 600;
+    color: var(--color-text);
+    line-height: 1.5;
+}
+
+.city-change-link-row {
+    margin: 0;
+    font-size: var(--font-size-small);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    word-break: break-word;
+}
+
+.city-change-link-label {
+    font-weight: 500;
+    margin-right: 4px;
+}
+
+.city-change-link {
+    color: var(--color-primary);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.city-change-link:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .city-change-timeline::before {
+        left: 6px;
+    }
+
+    .city-change-item-inner {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+        padding-left: 1.25rem;
+    }
+
+    .city-change-date-col {
+        text-align: left;
+    }
+
+    .city-change-axis {
+        display: none;
+    }
+}

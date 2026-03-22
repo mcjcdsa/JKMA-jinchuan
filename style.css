@@ -24,6 +24,9 @@
 /* 关于我们 — 建设合集卡片 */
 @import url('css/about-construction.css');
 
+/* 关于我们 — 城市变迁时间轴 */
+@import url('css/about-city-change.css');
+
 /* 导入行政区域查询样式 */
 @import url('css/districts.css');
 
