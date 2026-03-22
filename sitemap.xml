@@ -72,6 +72,12 @@
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>http://103.39.66.12:13626/jinchuan-regulations-v1.html</loc>
+        <lastmod>2026-03-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
         <loc>http://103.39.66.12:13626/specifications.html</loc>
         <lastmod>2026-03-14</lastmod>
         <changefreq>monthly</changefreq>

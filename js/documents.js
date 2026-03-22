@@ -80,11 +80,25 @@ const constructionSpecsData = {
 };
 
 /**
+ * 金川市详细规章制度 V1.0（全文独立页面，来源稿 1111）
+ */
+const regulationsV1Data = {
+    id: 'regulations-v1',
+    title: '金川市详细规章制度',
+    icon: '📜',
+    category: '规章制度',
+    version: 'V1.0',
+    description: '金川市内部建设规定与成员守则（完整版），含建设条例、交通、处罚标准与更新日志。',
+    externalUrl: 'jinchuan-regulations-v1.html'
+};
+
+/**
  * 所有文档数据
  */
 const documentsData = [
     rulesData,
-    constructionSpecsData
+    constructionSpecsData,
+    regulationsV1Data
 ];
 
 /**
@@ -103,13 +117,17 @@ function createDocumentCard(document) {
             <p class="document-card-description">${document.description}</p>
             <div class="document-card-footer">
                 <span class="document-card-version">版本：${document.version}</span>
-                <span class="document-card-action">点击查看详情 →</span>
+                <span class="document-card-action">${document.externalUrl ? '打开完整文档 →' : '点击查看详情 →'}</span>
             </div>
         </div>
     `;
     
     // 添加点击事件
     card.addEventListener('click', () => {
+        if (document.externalUrl) {
+            window.location.href = document.externalUrl;
+            return;
+        }
         showDocumentDetail(document);
     });
     
