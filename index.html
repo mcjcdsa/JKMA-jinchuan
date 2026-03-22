@@ -296,7 +296,8 @@
 
     <!-- 计时器单独一个 module：只依赖 js/timer.js。若与 main.js 混在同一 module，main 或其依赖链任一加载失败会导致整段脚本不执行，计时器永远停在「计算中...」 -->
     <script type="module">
-        import { initFoundationTimer, initServerLaunchTimer } from './js/timer.js';
+        /* ?v= 用于绕过浏览器/CDN 对旧版 timer.js 的缓存（旧文件无 initServerLaunchTimer 会报 export 错误） */
+        import { initFoundationTimer, initServerLaunchTimer } from './js/timer.js?v=20260122';
         function bootHomeTimers() {
             initFoundationTimer('foundation-timer', '2020-08-23T00:00:00');
             initServerLaunchTimer('server-launch-timer', '2026-03-21T18:58:00');

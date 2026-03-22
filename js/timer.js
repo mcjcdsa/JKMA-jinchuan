@@ -1,6 +1,7 @@
 /**
  * 计时器模块
  * 处理各种计时器功能
+ * @version 20260122 — 若首页报「无 initServerLaunchTimer」，多为缓存旧脚本，见 index.html 中 import 的 ?v=
  */
 
 /**
