@@ -69,6 +69,15 @@
                 </div>
             </div>
 
+            <!-- 建设合集（B站视频） -->
+            <div class="about-section about-section--construction">
+                <h2 class="about-section-title">建设合集</h2>
+                <p class="construction-intro">记录金川市建设过程的视频合集，点击「点我观看」前往哔哩哔哩播放。</p>
+                <div class="construction-collection" id="construction-collection">
+                    <p class="construction-loading">正在加载…</p>
+                </div>
+            </div>
+
             <!-- 城市发展规划 -->
             <div class="about-section" style="display: none;">
                 <h2 class="about-section-title">城市发展规划</h2>
@@ -141,6 +150,7 @@
         import { init } from './js/main.js';
         import { initTimeline } from './js/timeline.js';
         import { initOrganizations } from './js/organizations.js';
+        import { initConstructionCollection } from './js/construction-collection.js';
         
         // 初始化通用功能
         init();
@@ -176,6 +186,16 @@
                 console.log('集团划分初始化成功');
             } catch (error) {
                 console.error('集团划分初始化失败:', error);
+            }
+
+            try {
+                initConstructionCollection();
+            } catch (error) {
+                console.error('建设合集初始化失败:', error);
+                const el = document.getElementById('construction-collection');
+                if (el) {
+                    el.innerHTML = '<p class="construction-loading">建设合集加载失败，请刷新页面重试。</p>';
+                }
             }
         }
         

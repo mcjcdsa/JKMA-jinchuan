@@ -1,0 +1,177 @@
+/**
+ * 关于我们 — 建设合集（overlap 卡片布局）
+ */
+
+.about-section--construction .construction-intro {
+    text-align: center;
+    color: var(--color-text-secondary);
+    margin: calc(-1 * var(--spacing-md)) 0 var(--spacing-lg);
+    line-height: 1.7;
+}
+
+.construction-collection {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.construction-loading {
+    text-align: center;
+    color: var(--color-text-muted);
+    padding: var(--spacing-lg);
+}
+
+/* 左图右文，参考 overlap-section */
+.construction-overlap {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 0;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--color-border);
+    min-height: 200px;
+}
+
+.construction-left-rectangle {
+    flex: 0 0 42%;
+    min-width: 0;
+    position: relative;
+}
+
+.construction-thumb {
+    height: 100%;
+    min-height: 200px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: var(--spacing-md);
+}
+
+/* 各集略作区分色（无外链缩略图时用渐变） */
+.construction-thumb--ep1 {
+    background-image: linear-gradient(135deg, #1e3a5f 0%, #0f172a 50%, #1e293b 100%);
+}
+
+.construction-thumb--ep2 {
+    background-image: linear-gradient(135deg, #334155 0%, #1e293b 45%, #0c4a6e 100%);
+}
+
+.construction-thumb--ep3 {
+    background-image: linear-gradient(135deg, #475569 0%, #334155 100%);
+}
+
+.construction-thumb--ep4 {
+    background-image: linear-gradient(135deg, #64748b 0%, #475569 100%);
+}
+
+.construction-ep-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    background: rgba(0, 0, 0, 0.55);
+    color: #fff;
+    font-size: var(--font-size-small);
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    backdrop-filter: blur(4px);
+}
+
+.construction-right-rectangle {
+    flex: 1;
+    min-width: 0;
+    background: linear-gradient(160deg, #1e293b 0%, #0f172a 100%);
+    color: #e2e8f0;
+}
+
+.construction-black-content {
+    padding: var(--spacing-lg) var(--spacing-xl);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--spacing-md);
+}
+
+.construction-black-title {
+    margin: 0;
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    font-weight: 700;
+    line-height: 1.45;
+    color: #f8fafc;
+}
+
+.construction-black-text {
+    margin: 0;
+    font-size: var(--font-size-small);
+    color: #94a3b8;
+    line-height: 1.65;
+}
+
+.construction-action-row {
+    margin-top: var(--spacing-sm);
+}
+
+.construction-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    color: #fff !important;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: var(--font-size-small);
+    border-radius: var(--radius-md);
+    border: none;
+    cursor: pointer;
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+    box-shadow: var(--shadow-sm);
+}
+
+.construction-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    color: #fff !important;
+}
+
+.construction-btn-chevron {
+    font-size: 1.1em;
+    line-height: 1;
+    opacity: 0.9;
+}
+
+.construction-btn--disabled {
+    background: #334155;
+    color: #94a3b8 !important;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.construction-btn--disabled:hover {
+    transform: none;
+}
+
+@media (max-width: 768px) {
+    .construction-overlap {
+        flex-direction: column;
+    }
+
+    .construction-left-rectangle {
+        flex: none;
+        width: 100%;
+    }
+
+    .construction-thumb {
+        min-height: 160px;
+    }
+
+    .construction-black-content {
+        padding: var(--spacing-md) var(--spacing-lg);
+    }
+}

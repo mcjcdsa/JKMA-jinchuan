@@ -21,6 +21,9 @@
 /* 导入关于我们页面样式 */
 @import url('css/about.css');
 
+/* 关于我们 — 建设合集卡片 */
+@import url('css/about-construction.css');
+
 /* 导入行政区域查询样式 */
 @import url('css/districts.css');
 
