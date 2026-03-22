@@ -18,6 +18,9 @@
 /* 导入用户体验增强样式 */
 @import url('css/ux-enhancements.css');
 
+/* 全站布局优化（页面底、内容区宽度、面包屑节奏） */
+@import url('css/site-layout.css');
+
 /* 导入关于我们页面样式 */
 @import url('css/about.css');
 

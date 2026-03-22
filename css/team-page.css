@@ -3,7 +3,8 @@
  * 仅作用于 .team-page-section 内，避免影响其他页面组件。
  */
 
-.team-page-section {
+/* 与全站 .section 白底区分：提高优先级，避免被 site-layout 覆盖 */
+.section.team-page-section {
     background: linear-gradient(
         180deg,
         var(--color-primary-light-bg) 0%,
@@ -12,6 +13,8 @@
     );
     padding-top: var(--spacing-lg);
     padding-bottom: var(--spacing-xl);
+    border-bottom: none;
+    box-shadow: none;
 }
 
 .team-page-hero {

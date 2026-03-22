@@ -1,0 +1,94 @@
+/**
+ * 全站布局优化（参考现代团队/内容站：浅灰底、居中内容区、清晰分区）
+ * 在 layout.css 之后加载，覆盖/补充 body / section / 面包屑等。
+ */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #f1f5f9;
+    color: var(--color-text);
+    min-height: 100vh;
+}
+
+/* 侧栏：与主区略作区分，层次更清晰 */
+.navbar {
+    background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    border-right-color: #e2e8f0;
+    box-shadow: 4px 0 24px rgba(15, 23, 42, 0.06);
+}
+
+/* 主内容区：白底区块 + 轻分隔（排除首页横幅、团队成员页等特殊底） */
+.section:not(.hero-section):not(.team-page-section) {
+    background-color: #ffffff;
+    padding-top: clamp(1.75rem, 4vw, 2.75rem);
+    padding-bottom: clamp(1.75rem, 4vw, 2.75rem);
+    padding-left: clamp(0.75rem, 2.5vw, 1.25rem);
+    padding-right: clamp(0.75rem, 2.5vw, 1.25rem);
+    margin-bottom: 0;
+    border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) inset;
+}
+
+body > .section:last-of-type:not(.hero-section) {
+    border-bottom: none;
+}
+
+/* 首页横幅：全宽渐变 + 与全站一致的左右内边距 */
+.hero-section {
+    border-bottom: none;
+    box-shadow: none;
+    padding-left: clamp(0.75rem, 2.5vw, 1.25rem);
+    padding-right: clamp(0.75rem, 2.5vw, 1.25rem);
+}
+
+/* 内容容器：与参考站类似的居中宽度与左右留白 */
+.container {
+    width: 100%;
+    max-width: min(1200px, 100%);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: clamp(1rem, 3vw, 1.75rem);
+    padding-right: clamp(1rem, 3vw, 1.75rem);
+}
+
+/* 页面主标题节奏 */
+.section-title {
+    margin-top: 0;
+    margin-bottom: clamp(1.25rem, 3vw, 2rem);
+}
+
+/* 面包屑：与主内容对齐；桌面端无需为顶栏预留过大空隙 */
+.breadcrumb {
+    margin-top: 0;
+    padding-top: var(--spacing-md);
+    padding-bottom: var(--spacing-md);
+    padding-left: clamp(1rem, 3vw, 1.75rem);
+    padding-right: clamp(1rem, 3vw, 1.75rem);
+    background-color: #f8fafc;
+    border-bottom-color: #e2e8f0;
+}
+
+.breadcrumb-list {
+    max-width: min(1200px, 100%);
+    padding-left: 0;
+    padding-right: 0;
+}
+
+@media (max-width: 768px) {
+    /* 移动端：为固定汉堡按钮留出顶距 */
+    .breadcrumb {
+        margin-top: 52px;
+        padding-top: var(--spacing-sm);
+    }
+}
+
+/* 回到顶部按钮：避免与右下角内容重叠感（微调由 ux 已有 z-index 保证） */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
