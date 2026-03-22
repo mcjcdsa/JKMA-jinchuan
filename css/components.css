@@ -161,21 +161,13 @@
     border-radius: var(--radius-sm);
 }
 
-/* 首页「成立时间」卡片内的开服时间块 */
-.server-launch-block {
-    margin-top: var(--spacing-md);
-    text-align: center;
-}
-
+/* 开服时间卡片：说明文字 + 计时器 */
 .server-launch-label {
     margin: 0 0 var(--spacing-sm);
     font-size: var(--font-size-base);
     font-weight: 600;
     color: var(--color-text-secondary, #555);
-}
-
-.server-launch-block .timer-display {
-    font-size: clamp(1rem, 2.5vw, 1.5em);
+    text-align: center;
 }
 
 /* ========== 倒计时解读说明 ========== */
@@ -1243,6 +1235,12 @@
     margin-top: var(--spacing-lg);
 }
 
+/* 首页：成立时间 | 开服时间 | 最新动态 三列 */
+.info-card-row--triple {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+}
+
 .info-card {
     background-color: var(--color-bg-white);
     border-radius: var(--radius-md);
@@ -1258,6 +1256,10 @@
 
 .info-card.large-card {
     grid-column: span 1;
+}
+
+.info-card-row--triple .info-card .card-body .timer-display {
+    font-size: clamp(0.95rem, 2vw, 1.35em);
 }
 
 .card-header {
