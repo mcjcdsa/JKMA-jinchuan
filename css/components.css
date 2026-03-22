@@ -161,6 +161,23 @@
     border-radius: var(--radius-sm);
 }
 
+/* 首页「成立时间」卡片内的开服时间块 */
+.server-launch-block {
+    margin-top: var(--spacing-md);
+    text-align: center;
+}
+
+.server-launch-label {
+    margin: 0 0 var(--spacing-sm);
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    color: var(--color-text-secondary, #555);
+}
+
+.server-launch-block .timer-display {
+    font-size: clamp(1rem, 2.5vw, 1.5em);
+}
+
 /* ========== 倒计时解读说明 ========== */
 .countdown-legend-section {
     background-color: var(--color-bg-white);

@@ -26,6 +26,8 @@
     <link rel="canonical" href="http://103.39.66.12:13626/index.html">
     
     <title>主页 - JKMA都市圈|金川市官方网站</title>
+    <link rel="icon" type="image/jpeg" href="64018EEC5FC9515CE725726DC59EB387.jpeg">
+    <link rel="apple-touch-icon" href="64018EEC5FC9515CE725726DC59EB387.jpeg">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -198,7 +200,11 @@
                             <h3 class="card-title">⏰ 成立时间</h3>
                         </div>
                         <div class="card-body">
-                <div id="foundation-timer" class="timer-display">已成立：计算中...</div>
+                            <div id="foundation-timer" class="timer-display">已成立：计算中...</div>
+                            <div class="server-launch-block">
+                                <p class="server-launch-label">开服时间：2026年3月21日 18:58</p>
+                                <div id="server-launch-timer" class="timer-display">计算中...</div>
+                            </div>
                         </div>
                     </div>
                     <div class="info-card">
@@ -285,7 +291,7 @@
 
     <script type="module">
         import { init } from './js/main.js';
-        import { initFoundationTimer } from './js/timer.js';
+        import { initFoundationTimer, initServerLaunchTimer } from './js/timer.js';
         import { addHomePageStructuredData } from './js/seo.js';
         
         // 确保DOM加载完成后再初始化
@@ -295,6 +301,8 @@
             
             // 初始化成立时间计时器
             initFoundationTimer('foundation-timer', '2020-08-23T00:00:00');
+            // 开服时间：开服前倒计时，开服后与成立时间同格式累计
+            initServerLaunchTimer('server-launch-timer', '2026-03-21T18:58:00');
             
             // 添加结构化数据
             addHomePageStructuredData();
