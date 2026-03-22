@@ -52,6 +52,6 @@ function initAll() {
     
 }
 
-// 自动初始化
-init();
+// 不在此自动执行 init：各页面已通过 import 后显式调用 init()，
+// 若此处再 init() 会导致面包屑、导航等初始化逻辑重复执行。
 

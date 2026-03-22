@@ -45,6 +45,11 @@ export function generateBreadcrumb(items) {
  * 根据当前页面自动生成面包屑
  */
 export function initBreadcrumb() {
+    // 防止同一页被多次 init 时重复插入面包屑
+    if (document.querySelector('.breadcrumb')) {
+        return;
+    }
+
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     const pageMap = {
         'index.html': [{ text: '主页', url: 'index.html' }],
