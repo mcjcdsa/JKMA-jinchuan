@@ -294,35 +294,37 @@
         </div>
     </section>
 
+    <!-- 计时器单独一个 module：只依赖 js/timer.js。若与 main.js 混在同一 module，main 或其依赖链任一加载失败会导致整段脚本不执行，计时器永远停在「计算中...」 -->
     <script type="module">
-        import { init } from './js/main.js';
         import { initFoundationTimer, initServerLaunchTimer } from './js/timer.js';
-        import { addHomePageStructuredData } from './js/seo.js';
-        
-        // 确保DOM加载完成后再初始化
-        function initPage() {
-            // 计时器优先：避免 init() 中某步抛错导致整段脚本中断，计时器永远停在「计算中...」
+        function bootHomeTimers() {
             initFoundationTimer('foundation-timer', '2020-08-23T00:00:00');
             initServerLaunchTimer('server-launch-timer', '2026-03-21T18:58:00');
-
+        }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', bootHomeTimers);
+        } else {
+            bootHomeTimers();
+        }
+    </script>
+    <script type="module">
+        import { init } from './js/main.js';
+        import { addHomePageStructuredData } from './js/seo.js';
+        function initPage() {
             try {
                 init();
             } catch (err) {
                 console.error('首页通用初始化失败:', err);
             }
-
             try {
                 addHomePageStructuredData();
             } catch (err) {
                 console.error('首页结构化数据失败:', err);
             }
         }
-        
-        // DOM加载完成后执行
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', initPage);
-                } else {
-            // DOM已经加载完成，直接执行
+        } else {
             initPage();
         }
     </script>
