@@ -11,6 +11,7 @@ import { specificationsData } from './specifications.js';
 const rulesData = {
     id: 'rules',
     title: '金川市城市守则(1.0版)',
+    pageUrl: 'rules.html',
     icon: '📋',
     category: '城市规定',
     version: '1.0版',
@@ -72,6 +73,7 @@ const rulesData = {
 const constructionSpecsData = {
     id: 'specifications',
     title: '金川轨道交通建设规范',
+    pageUrl: 'specifications.html',
     icon: '🚇',
     category: '技术规范',
     version: '1.0版',
@@ -84,7 +86,8 @@ const constructionSpecsData = {
  */
 const regulationsV1Data = {
     id: 'regulations-v1',
-    title: '金川市详细规章制度',
+    title: '金川市详细规章制度 V1.0',
+    pageUrl: 'jinchuan-regulations-v1.html',
     icon: '📜',
     category: '规章制度',
     version: 'V1.0',
@@ -102,35 +105,56 @@ const documentsData = [
 ];
 
 /**
- * 创建文档卡片
+ * 转义 HTML，避免注入并安全显示标题
  */
-function createDocumentCard(document) {
+function escapeHtml(str) {
+    if (str == null) return '';
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+}
+
+/**
+ * 创建文档卡片
+ * 注意：参数不得命名为 document，否则会遮蔽全局 document 导致无法创建 DOM。
+ */
+function createDocumentCard(doc) {
     const card = document.createElement('div');
     card.className = 'document-card';
-    card.setAttribute('data-document-id', document.id);
-    
+    card.setAttribute('data-document-id', doc.id);
+
+    const titleHref = doc.pageUrl || doc.externalUrl || '#';
+    const titleText = escapeHtml(doc.title);
+
     card.innerHTML = `
-        <div class="document-card-icon">${document.icon}</div>
+        <div class="document-card-icon">${doc.icon}</div>
         <div class="document-card-content">
-            <h3 class="document-card-title">${document.title}</h3>
-            <p class="document-card-category">${document.category}</p>
-            <p class="document-card-description">${document.description}</p>
+            <h3 class="document-card-title">
+                <a href="${titleHref}" class="document-card-title-link">${titleText}</a>
+            </h3>
+            <p class="document-card-category">${escapeHtml(doc.category)}</p>
+            <p class="document-card-description">${escapeHtml(doc.description)}</p>
             <div class="document-card-footer">
-                <span class="document-card-version">版本：${document.version}</span>
-                <span class="document-card-action">${document.externalUrl ? '打开完整文档 →' : '点击查看详情 →'}</span>
+                <span class="document-card-version">版本：${escapeHtml(doc.version)}</span>
+                <span class="document-card-action">${doc.externalUrl ? '打开完整文档 →' : '在页面内查看详情 →'}</span>
             </div>
         </div>
     `;
-    
-    // 添加点击事件
-    card.addEventListener('click', () => {
-        if (document.externalUrl) {
-            window.location.href = document.externalUrl;
+
+    // 点击标题链由浏览器负责跳转；点击卡片其余区域：独立全文页则整页跳转，否则打开弹窗预览
+    card.addEventListener('click', (e) => {
+        if (e.target.closest('a.document-card-title-link')) {
             return;
         }
-        showDocumentDetail(document);
+        if (doc.externalUrl) {
+            window.location.href = doc.externalUrl;
+            return;
+        }
+        showDocumentDetail(doc);
     });
-    
+
     return card;
 }
 
@@ -275,25 +299,28 @@ function getSpecItemIcon(type) {
 }
 
 /**
- * 显示文档详情
+ * 显示文档详情（弹窗预览；完整内容请点标题进入独立页面）
  */
-function showDocumentDetail(document) {
+function showDocumentDetail(doc) {
     const modal = document.getElementById('document-modal');
     const modalTitle = document.getElementById('modal-title');
     const modalBody = document.getElementById('modal-body');
-    
-    modalTitle.textContent = document.title;
-    
+
+    modalTitle.textContent = doc.title;
+
     // 根据文档类型渲染内容
     let contentHtml = '';
-    if (document.id === 'rules') {
-        contentHtml = renderRulesContent(document.content);
-    } else if (document.id === 'specifications') {
-        contentHtml = renderSpecificationsContent(document.content);
+    if (doc.id === 'rules') {
+        contentHtml = renderRulesContent(doc.content);
+    } else if (doc.id === 'specifications') {
+        contentHtml = renderSpecificationsContent(doc.content);
     }
-    
-    modalBody.innerHTML = contentHtml;
-    
+
+    const pageHint = doc.pageUrl
+        ? `<p class="document-modal-hint"><a href="${escapeHtml(doc.pageUrl)}">打开独立页面查看完整版 →</a></p>`
+        : '';
+    modalBody.innerHTML = pageHint + contentHtml;
+
     // 显示模态框
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';

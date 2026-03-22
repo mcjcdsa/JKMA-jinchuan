@@ -86,6 +86,24 @@
     line-height: 1.4;
 }
 
+.document-card-title .document-card-title-link {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: border-color var(--transition-normal), color var(--transition-normal);
+}
+
+.document-card-title .document-card-title-link:hover {
+    color: var(--color-primary-dark);
+    border-bottom-color: var(--color-primary);
+}
+
+.document-card-title .document-card-title-link:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+}
+
 .document-card-category {
     font-size: var(--font-size-small);
     color: var(--color-primary-light);
@@ -189,6 +207,27 @@
     padding: var(--spacing-lg);
     border-bottom: 2px solid var(--color-border);
     background-color: var(--color-primary-light-bg);
+}
+
+/* 弹窗正文顶部：跳转独立页面提示 */
+.document-modal-hint {
+    margin: 0 0 var(--spacing-md) 0;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--color-primary-light-bg);
+    border-radius: var(--radius-sm);
+    border-left: 3px solid var(--color-primary);
+    font-size: var(--font-size-small);
+    line-height: 1.6;
+}
+
+.document-modal-hint a {
+    color: var(--color-primary);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.document-modal-hint a:hover {
+    text-decoration: underline;
 }
 
 .modal-title {
